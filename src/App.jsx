@@ -5,7 +5,7 @@ import HomePage from "./Pages/HomePage"
 import AboutPage from "./Pages/AboutPage"
 import Footer from "./components/Footer";
 import ContactPage from "./Pages/ContactPage";
-import Service_repair from "./Pages/service_repair";
+import Service_repair from "./Pages/Service_repair";
 import Service_TT from "./Pages/Service_TT";
 import Service_Reconditional from "./Pages/Service_Reconditional";
 import Service_Annual from "./Pages/Service_Annual";
