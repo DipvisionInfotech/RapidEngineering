@@ -21,7 +21,7 @@ function App() {
   return (
     <>
    
-    <Router>
+    <Router basename="/RapidEngineering">
        <Navbar/>
     <Routes>
       <Route path='/' element={<HomePage/>}/>
@@ -39,7 +39,7 @@ function App() {
       <Route path='/product' element={<Product/>}/>
       </Routes>
       <Footer />
-    </Router>,
+    </Router>
 
     </>
   )
