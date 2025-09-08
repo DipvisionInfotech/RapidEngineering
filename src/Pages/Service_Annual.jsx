@@ -1,9 +1,13 @@
-export default function Service_Annual() {
+import React from 'react'
+import { ServiceCard, Annual_Contracts, CheckIcon } from '../components/Service/Annual_Contracts';
+
+ const Service_Annual = () => {
   return (
     <div>
-      <section className="py-16">
-          <p className="text-center font-bold text-slate-600">Annual Maintenance Contracts<br/></p>
-      </section>
+        <ServiceCard/>
+        <Annual_Contracts/>
+        <CheckIcon/>
     </div>
-  );
+  )
 }
+export default Service_Annual;

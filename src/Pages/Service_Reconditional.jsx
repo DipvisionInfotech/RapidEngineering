@@ -1,9 +1,10 @@
-export default function Service_Reconditional() {
+import { ProcessStepCard, Reconditional } from '../components/Service/Reconditional'
+const Service_Reconditional = () => {
   return (
     <div>
-      <section className="py-16">
-          <p className="text-center font-bold text-slate-600">Dummy Page<br/></p>
-      </section>
-    </div>
+    <ProcessStepCard/>
+    <Reconditional/>
+   </div>
   );
 }
+export default Service_Reconditional;

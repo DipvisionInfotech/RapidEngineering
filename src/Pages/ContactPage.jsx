@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { MapPin, Phone, Mail, Facebook,Instagram,Twitter,Linkedin} from "lucide-react";
+  
 const ContactPage = () => {
   const [formData, setFormData] = useState({
     firstName: '',
@@ -30,16 +31,23 @@ const ContactPage = () => {
       message: ''
     });
   };
-
   return (
-    <div className="pt-24 pb-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Contact Us</h1>
-          <p className="text-xl text-gray-600">
+        <div className="bg-gray-50 font-sans text-gray-800">
+      {/* Header/Hero Section with Background Image */}
+      <header
+        className="bg-gradient-to-r from-blue-900/80 to-blue-700/80 text-white bg-cover bg-center relative"
+        style={{ backgroundImage: 'url(https://media.istockphoto.com/id/2044799300/photo/contact-us-puzzle-piece.webp?a=1&b=1&s=612x612&w=0&k=20&c=gpYNhO8hTu6aXRGnEJdU5R5QCxgjjS6ND9mnGT6Km28=)' }}
+      >
+        <div className="absolute inset-0 bg-blue-900 opacity-60"></div>
+        <div className="max-w-7xl mx-auto text-center py-16 sm:py-24 relative z-10">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4">
+            Contact Us
+          </h1>
+          <p className="text-lg sm:text-xl font-light max-w-3xl mx-auto opacity-90">
             Get in touch with our team for quotes, questions, or partnership opportunities.
           </p>
-        </div>
+          </div>
+      </header>
         
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Form */}
@@ -148,28 +156,9 @@ const ContactPage = () => {
                 <a className="flex items-center justify-center gap-2 rounded-2xl border border-slate-200 p-3 hover:text-green-500 transition-colors" href="https://www.linkedin.com/"><Linkedin className="h-4 w-4"/></a>
               </div>
             </div>
-            
-            {/* <div className="bg-blue-900 text-white rounded-xl p-8">
-              <h3 className="text-xl font-bold mb-4">Business Hours</h3>
-              <div className="space-y-2">
-                <div className="flex justify-between">
-                  <span>Monday - Friday:</span>
-                  <span>8:00 AM - 6:00 PM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Saturday:</span>
-                  <span>9:00 AM - 4:00 PM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Sunday:</span>
-                  <span>Closed</span>
-                </div>
-              </div>
-            </div> */}
           </div>
         </div>
       </div>
-    </div>
   );
 };
 export default ContactPage;

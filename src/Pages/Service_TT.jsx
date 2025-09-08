@@ -1,5 +1,5 @@
 import React from 'react'
-import { CTASection, HeroSection, SpecializedCourses, StandardCourses, TrainingGallery } from '../components/Service/Technical';
+import {  HeroSection, SpecializedCourses, StandardCourses, TrainingGallery } from '../components/Service/Technical';
 
 const Service_TT = () => {
   return (
@@ -43,7 +43,6 @@ const Service_TT = () => {
         <TrainingGallery />
         <StandardCourses />
         <SpecializedCourses />
-        <CTASection />
       </main>
     </div>
   )
