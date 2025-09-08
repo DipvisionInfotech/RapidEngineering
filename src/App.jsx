@@ -5,7 +5,7 @@ import HomePage from "./Pages/HomePage"
 import AboutPage from "./Pages/AboutPage"
 import Footer from "./components/Footer";
 import ContactPage from "./Pages/ContactPage";
-import Service_repair from "./Pages/Service_repair";
+import Service_repair from "./Pages/service_repair";
 import Service_TT from "./Pages/Service_TT";
 import Service_Reconditional from "./Pages/Service_Reconditional";
 import Service_Annual from "./Pages/Service_Annual";
@@ -14,14 +14,19 @@ import Industries_Mining from "./Pages/Industries_Mining";
 import Industries_Agriculture from "./Pages/Industries_Agriculture";
 import Industries_Defence from "./Pages/Industries_Defence";
 import Industries_Marine from "./Pages/Industries_Marine";
+import Industries_Forest from "./Pages/Industries_Forest";
+import Industries_Tunnel from "./Pages/Industries_Tunnel";
 import Product from "./Pages/Product";
+import Industries_Manufacturing from "./Pages/Industries_Manfacturing";
+import Industries_Recycling from "./Pages/Industries_Recycling";
+
 
 function App() {
   
   return (
     <>
    
-    <Router basename="/RapidEngineering">
+    <Router>
        <Navbar/>
     <Routes>
       <Route path='/' element={<HomePage/>}/>
@@ -36,10 +41,14 @@ function App() {
       <Route path='/agriculture_machines' element={<Industries_Agriculture/>}/>
       <Route path='/defence_aviation' element={<Industries_Defence/>}/>
       <Route path='/marine_offshore' element={<Industries_Marine/>}/>
+      <Route path='/forestry' element={<Industries_Forest/>}/>
+      <Route path='/tunnel' element={<Industries_Tunnel/>}/>
+      <Route path='/manufacturing' element={<Industries_Manufacturing/>}/>
+      <Route path='/recycling' element={<Industries_Recycling/>}/>
       <Route path='/product' element={<Product/>}/>
       </Routes>
       <Footer />
-    </Router>
+    </Router>,
 
     </>
   )
