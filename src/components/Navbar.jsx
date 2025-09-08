@@ -15,6 +15,11 @@ const industries = [
     { to: "agriculture_machines/", label: "Agriculture Machines" },
     { to: "defence_aviation/", label: "Defence & Avaiation" },
     { to: "marine_offshore/", label: "Marine & Off-Shore" },
+    { to: "forestry/", label: "Forestry" },
+    { to: "tunnel/", label: "Tunnel Boring Machines" },
+    { to: "manufacturing/", label: "Manufacturing Equipments" },
+    { to: "recycling/", label: "Recycling"},
+    
   ];
  
   const services = [

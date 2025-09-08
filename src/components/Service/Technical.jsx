@@ -8,62 +8,64 @@ import {
 import { useRef } from 'react';
 
 // Animated Counter Component
-const AnimatedCounter = ({ end, duration = 2000, prefix = '', suffix = '' }) => {
-  const [count, setCount] = useState(0);
-  const ref = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
+// const AnimatedCounter = ({ end, duration = 2000, prefix = '', suffix = '' }) => {
+//   const [count, setCount] = useState(0);
+//   const ref = useRef(null);
+//   const [isVisible, setIsVisible] = useState(false);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.5 }
-    );
+//   useEffect(() => {
+//     const observer = new IntersectionObserver(
+//       ([entry]) => {
+//         if (entry.isIntersecting) {
+//           setIsVisible(true);
+//           observer.unobserve(entry.target);
+//         }
+//       },
+//       { threshold: 0.5 }
+//     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
+//     if (ref.current) {
+//       observer.observe(ref.current);
+//     }
 
-    return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
-    };
-  }, []);
+//     return () => {
+//       if (ref.current) {
+//         observer.unobserve(ref.current);
+//       }
+//     };
+//   }, []);
 
-  useEffect(() => {
-    if (isVisible) {
-      let startTime;
-      const animate = (currentTime) => {
-        if (!startTime) startTime = currentTime;
-        const progress = Math.min((currentTime - startTime) / duration, 1);
-        setCount(Math.floor(progress * end));
+//   useEffect(() => {
+//     if (isVisible) {
+//       let startTime;
+//       const animate = (currentTime) => {
+//         if (!startTime) startTime = currentTime;
+//         const progress = Math.min((currentTime - startTime) / duration, 1);
+//         setCount(Math.floor(progress * end));
         
-        if (progress < 1) {
-          requestAnimationFrame(animate);
-        }
-      };
-      requestAnimationFrame(animate);
-    }
-  }, [isVisible, end, duration]);
+//         if (progress < 1) {
+//           requestAnimationFrame(animate);
+//         }
+//       };
+//       requestAnimationFrame(animate);
+//     }
+//   }, [isVisible, end, duration]);
 
-  return <span ref={ref}>{prefix}{count.toLocaleString()}{suffix}</span>;
-};
+//   return <span ref={ref}>{prefix}{count.toLocaleString()}{suffix}</span>;
+// };
 
 
 // Hero Section
 export const HeroSection = () => {
   return (
-    <section id="training" className="bg-gradient-to-r from-blue-900 via-indigo-900 to-blue-900 text-white py-20 pt-28 relative overflow-hidden">
+    <section id="training" className="bg-gradient-to-r from-blue-900/80 to-blue-700/80 text-white py-12 px-6 sm:px-12 md:px-24 bg-cover bg-center relative"
+    style={{backgroundImage: 'url(https://img.freepik.com/free-vector/business-team-with-laptops-look-digital-presentation-with-charts-digital-presentation-office-online-meeting-visual-data-representation-concept-bright-vibrant-violet-isolated-illustration_335657-579.jpg?ga=GA1.1.1154289487.1757069524&semt=ais_hybrid&w=740&q=80)'}}
+    >
       {/* Animated background elements */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-10 w-20 h-20 bg-blue-400 rounded-full animate-pulse-slow"></div>
+      <div className="absolute inset-0 bg-gray-700 opacity-80">
+        <div className="absolute top-20 left-10 w-20 h-20 bg-blue-600 rounded-full animate-pulse-slow"></div>
         <div className="absolute top-40 right-20 w-16 h-16 bg-orange-400 rounded-full animate-bounce-slow"></div>
-        <div className="absolute bottom-20 left-1/4 w-24 h-24 bg-purple-400 rounded-full animate-pulse-slow delay-500"></div>
+        <div className="absolute bottom-20 left-1/4 w-24 h-24 bg-purple-500 rounded-full animate-pulse-slow delay-500"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -78,21 +80,21 @@ export const HeroSection = () => {
               Technical Training
             </h1>
             
-            <p className="text-xl mb-8 text-gray-200 leading-relaxed">
-              PHE Institute of Hydraulics, the training arm of PHE Industries, offers a comprehensive suite of hydraulics training programs tailored for individuals and organizations across sectors.
+            <p className="text-xl mb-8 text-black-400 leading-relaxed">
+              Rapid Engineering Services, the training arm of Industries, offers a comprehensive suite of hydraulics training programs tailored for individuals and organizations across sectors.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
+              {/* <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
                 View Courses <ArrowRight className="ml-2 h-5 w-5" />
-              </button>
-              <button className="border border-white text-white hover:bg-white hover:text-gray-900 px-8 py-3 rounded-lg font-semibold transition-all duration-300">
+              </button> */}
+              {/* <button className="border border-white text-white hover:bg-white hover:text-gray-900 px-8 py-3 rounded-lg font-semibold transition-all duration-300">
                 Download Brochure
-              </button>
+              </button> */}
             </div>
             
             <div className="grid grid-cols-2 gap-6 text-center">
-              <div className="animate-fadeInUp">
+              {/* <div className="animate-fadeInUp">
                 <div className="text-4xl font-bold text-orange-400">
                   <AnimatedCounter end={2000} suffix="+" />
                 </div>
@@ -103,7 +105,7 @@ export const HeroSection = () => {
                   <AnimatedCounter end={95} suffix="%" />
                 </div>
                 <p className="text-sm text-gray-300">Training NPS</p>
-              </div>
+              </div> */}
             </div>
           </div>
           
@@ -180,7 +182,7 @@ export const TrainingGallery = () => {
         <div className="text-center mb-16 animate-fadeInUp">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Expert-Led Hydraulics Training Programs</h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto">
-            At PHE Industries, we offer industry-aligned hydraulics training programs designed to build practical skills and deep technical knowledge across various sectors. Whether you're a beginner, a technician, or an industry professional, our hands-on courses cover everything from the basics to advanced repair techniques.
+            At Rapid Engineering Services, we offer industry-aligned hydraulics training programs designed to build practical skills and deep technical knowledge across various sectors. Whether you're a beginner, a technician, or an industry professional, our hands-on courses cover everything from the basics to advanced repair techniques.
           </p>
         </div>
 
@@ -348,7 +350,7 @@ export const StandardCourses = () => {
                 </ul>
                 
                 <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
-                  Enroll Now
+                  <a href="tel:+91 9999999999">Enroll Now</a>
                 </button>
               </div>
             </div>
@@ -372,8 +374,8 @@ export const SpecializedCourses = () => {
         "Best For Organizations",
         "Collaborative Program Design"
       ],
-      cta: "Start Now",
-      price: null
+      // cta: "Start Now",
+      // price: null
     },
     {
       title: "12-Month Career-Building Program",
@@ -385,7 +387,7 @@ export const SpecializedCourses = () => {
         "Exposure to Real Service Cases",
         "High Demand Skillset"
       ],
-      cta: "Start Now"
+      // cta: "Start Now"
     },
     {
       title: "Marine Hydraulics Training",
@@ -397,8 +399,8 @@ export const SpecializedCourses = () => {
         "Compliance-Driven Training",
         "Supports Preventive Maintenance"
       ],
-      cta: "Start Now",
-      price: null
+      // cta: "Start Now",
+      // price: null
     }
   ];
 
@@ -443,9 +445,9 @@ export const SpecializedCourses = () => {
                   ))}
                 </ul>
                 
-                <button className="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 px-6 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+                {/* <button className="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 px-6 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
                   {course.cta}
-                </button>
+                </button> */}
               </div>
             </div>
           ))}
@@ -456,33 +458,33 @@ export const SpecializedCourses = () => {
 };
 
 // CTA Section
-export const CTASection = () => {
-  return (
-    <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-10 left-10 w-32 h-32 bg-white rounded-full animate-pulse-slow"></div>
-        <div className="absolute bottom-10 right-10 w-24 h-24 bg-orange-400 rounded-full animate-bounce-slow"></div>
-      </div>
+// export const CTASection = () => {
+//   return (
+//     <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white relative overflow-hidden">
+//       {/* Animated background elements */}
+//       <div className="absolute inset-0 opacity-10">
+//         <div className="absolute top-10 left-10 w-32 h-32 bg-white rounded-full animate-pulse-slow"></div>
+//         {/* <div className="absolute bottom-10 right-10 w-24 h-24 bg-orange-400 rounded-full animate-bounce-slow"></div> */}
+//       </div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-        <div className="animate-fadeInUp">
-          <h2 className="text-4xl font-bold mb-6">Ready to Advance Your Hydraulics Career?</h2>
-          <p className="text-xl mb-8 text-blue-100 max-w-3xl mx-auto">
-            Join over 2,000 engineers who have already enhanced their skills with PHE Institute of Hydraulics. 
-            Get industry-recognized certification and hands-on experience with live equipment.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
-              Enroll Today <ArrowRight className="ml-2 h-5 w-5" />
-            </button>
-            <button className="border border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center">
-              <Phone className="mr-2 h-5 w-5" />
-              Call: +91-XXXX-XXXXXX
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
+//       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+//         <div className="animate-fadeInUp">
+//           <h2 className="text-4xl font-bold mb-6">Ready to Advance Your Hydraulics Career?</h2>
+//           <p className="text-xl mb-8 text-blue-100 max-w-3xl mx-auto">
+//             Join over 2,000 engineers who have already enhanced their skills with PHE Institute of Hydraulics. 
+//             Get industry-recognized certification and hands-on experience with live equipment.
+//           </p>
+//           <div className="flex flex-col sm:flex-row gap-4 justify-center">
+//             <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
+//               Enroll Today <ArrowRight className="ml-2 h-5 w-5" />
+//             </button>
+//             <button className="border border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center">
+//               <Phone className="mr-2 h-5 w-5" />
+//               Call: +91-XXXX-XXXXXX
+//             </button>
+//           </div>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };

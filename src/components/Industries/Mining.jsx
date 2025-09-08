@@ -22,9 +22,10 @@ export const Mining = () => {
     <div className="bg-gray-50 font-sans text-gray-800">
         <header
         className="bg-gradient-to-r from-blue-900/80 to-blue-700/80 text-white py-12 px-6 sm:px-12 md:px-24 bg-cover bg-center relative"
-        style={{ backgroundImage: 'url(https://www.beckersmcusa.com/sites/default/files/inline-images/mining%20underground.jpg)' }}
+        // style={{ backgroundImage: 'url(https://www.beckersmcusa.com/sites/default/files/inline-images/mining%20underground.jpg)' }}
+        style={{backgroundImage:'url(https://img.freepik.com/free-photo/aerial-shot-two-power-plant-sunset-vilnius_181624-15104.jpg?ga=GA1.1.1154289487.1757069524&semt=ais_hybrid&w=740&q=80)'}}
       >
-        <div className="absolute inset-0 bg-blue-900 opacity-60"></div>
+        <div className="absolute inset-0 bg-gray-900 opacity-80"></div>
         <div className="max-w-7xl mx-auto text-center py-16 sm:py-24 relative z-10">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4">
             Mining & Power Generation
@@ -43,7 +44,8 @@ export const Mining = () => {
             <div className="w-full md:w-1/2">
               {/* Placeholder image for the section's visual */}
               <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRC5nkxAeytJgC6-ZQCNVjh1nHYgWH8ZIRKAQ&s"
+                  src="https://img.freepik.com/free-photo/wide-angle-shot-excavation-machines-lookout-jackerath-garzweiler-skywalk-germany_181624-10184.jpg?ga=GA1.1.1154289487.1757069524&semt=ais_hybrid&w=740&q=80"
+                // src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRC5nkxAeytJgC6-ZQCNVjh1nHYgWH8ZIRKAQ&s"
                 alt="Mining and Power Generation equipment"
                 className="w-full h-auto rounded-xl shadow-2xl"
               />

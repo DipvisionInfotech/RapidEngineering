@@ -17,21 +17,21 @@ const CheckIcon = () => (
 );
 
 // Main App component to contain the entire page structure
-export const Defence = () => {
+export const Manufacturing = () => {
   return (
     <div className="bg-gray-50 font-sans text-gray-800">
       {/* Header/Hero Section */}
-      <header className="bg-gradient-to-r from-blue-900/80 to-blue-700/80 text-white py-12 px-6 sm:px-12 md:px-24 bg-cover bg-center relative"
-                style={{ backgroundImage: 'url(https://img.freepik.com/free-photo/yellow-jets-maneuvering-sky-air-parade_181624-16775.jpg?ga=GA1.1.1154289487.1757069524&semt=ais_hybrid&w=740&q=80)' }}
+      <header   className="bg-gradient-to-r from-blue-900/80 to-blue-700/80 text-white py-12 px-6 sm:px-12 md:px-24 bg-cover bg-center relative"
+                style={{ backgroundImage: 'url(https://img.freepik.com/free-photo/3d-rendering-hydraulic-elements_23-2149333332.jpg?ga=GA1.1.1154289487.1757069524&semt=ais_hybrid&w=740&q=80)' }}
             >
-        <div className="absolute inset-0 bg-blue-900 opacity-60"></div>
+       <div className="absolute inset-0 bg-gray-700 opacity-80"></div>
                 <div className="max-w-7xl mx-auto text-center py-16 sm:py-24 relative z-10">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4">
-            Defence & Aviation
+           Manufacturing Equipments
           </h1>
           <p className="text-lg sm:text-xl font-light max-w-3xl mx-auto opacity-90">
-            Precision hydraulic components for critical applications in the defence & aviation industry.
-          </p>
+                Our hydraulic solutions power the precision and automation of modern manufacturing equipment.          
+            </p>
         </div>
       </header>
 
@@ -43,20 +43,17 @@ export const Defence = () => {
             <div className="w-full md:w-1/2">
               {/* Placeholder image for the section's visual */}
               <img
-                src="https://img.freepik.com/free-photo/low-angle-shot-b-17-bomber-plane-from-wwii-captured-airbase-sunny-day_181624-26344.jpg?ga=GA1.1.1154289487.1757069524&semt=ais_hybrid&w=740&q=80"
+                src="https://img.freepik.com/free-photo/machines-industrial-building_140725-7605.jpg?ga=GA1.1.1154289487.1757069524&semt=ais_hybrid&w=740&q=80"
                 alt="Defence and Aviation equipment"
                 className="w-full h-auto rounded-xl shadow-2xl"
               />
             </div>
             <div className="w-full md:w-1/2 text-center md:text-left">
               <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-                Defence & Aviation
+                Manufacturing Equipments
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed mb-4">
-                The defence and aviation sectors require hydraulic systems that are precise, reliable, and able to operate in extreme conditions.
-              </p>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                We specialize in manufacturing hydraulic components that meet the rigorous standards and certifications demanded by this industry, ensuring mission-critical performance.
+                Hydraulic systems are integral to modern manufacturing, providing the powerful and precise control required for heavy-duty machinery. Our solutions enhance the performance of presses, robotics, and assembly line equipment, ensuring operational efficiency and reliability.
               </p>
             </div>
           </div>
@@ -66,4 +63,4 @@ export const Defence = () => {
   );
 };
 
-export default Defence;
+export default Manufacturing;

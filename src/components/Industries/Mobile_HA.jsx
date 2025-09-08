@@ -46,7 +46,9 @@ const Mobile_HA = () => {
       </header> */}
         <header
         className="bg-gradient-to-r from-blue-900/80 to-blue-700/80 text-white py-12 px-6 sm:px-12 md:px-24 bg-cover bg-center relative"
-        style={{ backgroundImage: 'url(https://img.powermotiontech.com/files/base/ebm/hydraulicspneumatics/image/2024/07/66a931a3d711e6875c47483d-dreamstime_antonmatveev_80278754_promo.png?auto=format,compress&fit=crop&q=45&h=356&height=356&w=640&width=640)' }}
+        // style={{ backgroundImage: 'url(https://img.powermotiontech.com/files/base/ebm/hydraulicspneumatics/image/2024/07/66a931a3d711e6875c47483d-dreamstime_antonmatveev_80278754_promo.png?auto=format,compress&fit=crop&q=45&h=356&height=356&w=640&width=640)' }}
+        style={{backgroundImage: 'url(https://img.freepik.com/free-photo/3d-rendering-hydraulic-elements_23-2149333335.jpg?ga=GA1.1.1154289487.1757069524&semt=ais_hybrid&w=740&q=80)'}}
+
       >
         <div className="absolute inset-0 bg-blue-900 opacity-60"></div>
         <div className="max-w-7xl mx-auto text-center py-16 sm:py-24 relative z-10">
@@ -67,7 +69,8 @@ const Mobile_HA = () => {
             <div className="w-full md:w-1/2">
               {/* Using a placeholder image to represent the content from the original site */}
               <img
-                src="https://www.whitehouseproductsltd.com/getattachment/c11c235a-f64c-41a2-86b1-1512321542f7/yellow-wheel-loader-and-excavator-are-working.jpg"
+                // src="https://www.whitehouseproductsltd.com/getattachment/c11c235a-f64c-41a2-86b1-1512321542f7/yellow-wheel-loader-and-excavator-are-working.jpg"
+                src="https://img.freepik.com/free-photo/modern-automated-assembly-line-cars-latest-technological-neutral-technologies-production-cars-plant-assembly-shop-modern-cars_645730-531.jpg?ga=GA1.1.1154289487.1757069524&semt=ais_hybrid&w=740&q=80"
                 alt="Mobile Hydraulics and Automation equipment"
                 className="w-full h-auto rounded-xl shadow-2xl"
               />

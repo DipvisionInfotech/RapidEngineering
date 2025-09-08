@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import res from "../assets/res.jpg";
 
 // Main App component that combines all sections
 const App = () => {
@@ -6,8 +7,9 @@ const App = () => {
     <div className="font-sans antialiased text-gray-900 bg-gray-50">
       <HeroSection />
       <IndustriesCarousel />
+      <ProductsGrid/>
       <ServicesCarousel />
-    </div>
+      </div>
   );
 };
 
@@ -26,15 +28,18 @@ const Button = ({ children, className = '', ...props }) => {
 // Hero Section Component
 const HeroSection = () => {
   return (
-    <section className="bg-gradient-to-r from-green-700 to-blue-500 text-white py-20">
+    // <section className="bg-gradient-to-r from-green-700 to-blue-500 text-white py-20">
+    <section className="bg-gradient-to-r from-blue-900/80 to-blue-700/80 text-black py-10 px-4 sm:px-10 md:px-24 bg-cover bg-center relative"
+    style={{ backgroundImage: `url(${res})` }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
+            {/* <h2 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
               Precision Manufacturing for the Future
-            </h2>
-            <p className="text-xl mb-8 text-blue-100">
-              Leading the industry with innovative CNC machining, automation solutions, and quality manufacturing since 2002.
+            </h2> */}
+            <p className="text-xl mb-2 text-black-100 pt-20">
+              Leading the industry with innovative pumps & motors, automation solutions, and quality manufacturing since 2012.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               {/* <Button className="bg-orange-500 hover:bg-orange-600 text-white">
@@ -48,8 +53,10 @@ const HeroSection = () => {
               </Button> */}
             </div>
           </div>
-          <div className="relative">
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8">
+          <br></br><br></br><br></br><br></br>
+          <div className="flex justify-end"></div>
+          <div className="relative pt-30">
+            <div className="bg-black/10 backdrop-blur-sm rounded-xl p-6">
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center">
                   <div className="bg-blue-500 rounded-lg p-4 mb-3">
@@ -57,8 +64,8 @@ const HeroSection = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9.594 3.75c.504-.504 1.154-.756 1.802-.756s1.298.252 1.802.756l.399.398m-.609 4.21c1.479-1.478 2.37-2.381 3.287-3.299A3.352 3.352 0 0117 8.25c0 .762-.35 1.503-.997 2.057-2.734 2.379-4.102 3.56-4.102 3.56S10.231 16.7 9 17.5c-1.4 1.4-2.522 1.942-3.69 1.942H3.75v-.058c1.868 0 3.659-.964 5.25-2.091" />
                     </svg>
                   </div>
-                  <h4 className="font-semibold">20+ Years</h4>
-                  <p className="text-sm text-blue-100">Experience</p>
+                  <h4 className="font-semibold">13+ Years</h4>
+                  <p className="text-sm text-black-100">Experience</p>
                 </div>
                 <div className="text-center">
                   <div className="bg-blue-500 rounded-lg p-4 mb-3">
@@ -67,7 +74,7 @@ const HeroSection = () => {
                     </svg>
                   </div>
                   <h4 className="font-semibold">ISO Certified</h4>
-                  <p className="text-sm text-blue-100">Quality Assured</p>
+                  <p className="text-sm text-black-100">Quality Assured</p>
                 </div>
                 <div className="text-center">
                   <div className="bg-blue-500 rounded-lg p-4 mb-3">
@@ -75,8 +82,8 @@ const HeroSection = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 3v4.5A2.25 2.25 0 017.25 9h9.5A2.25 2.25 0 0019 6.75V3" />
                     </svg>
                   </div>
-                  <h4 className="font-semibold">500+</h4>
-                  <p className="text-sm text-blue-100">Projects Completed</p>
+                  <h4 className="font-semibold">100+</h4>
+                  <p className="text-sm text-black-100">Projects Completed</p>
                 </div>
                 <div className="text-center">
                   <div className="bg-blue-500 rounded-lg p-4 mb-3">
@@ -86,7 +93,7 @@ const HeroSection = () => {
                     </svg>
                   </div>
                   <h4 className="font-semibold">50+</h4>
-                  <p className="text-sm text-blue-100">Team Members</p>
+                  <p className="text-sm text-black-100">Team Members</p>
                 </div>
               </div>
             </div>
@@ -100,11 +107,15 @@ const HeroSection = () => {
 // Carousel component for the industries
 const IndustriesCarousel = () => {
   const industries = [
-    { name: 'Mobile Hydraulics & Automation', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRru109T0-_LgMlKXHalpK0qGzxFrBgIIM6sw&s', description: 'Powering heavy machinery and precise control systems for mobile applications.' },
-    { name: 'Mining & Power Generation', image: 'https://images.unsplash.com/photo-1517439366557-b43e6a4b11f2?q=80&w=2670&auto=format&fit=crop', description: 'Providing robust components for the demanding environments of mining and energy production.' },
-    { name: 'Agriculture Machines', image: 'https://images.unsplash.com/photo-1473255140889-1389659c25f3?q=80&w=2670&auto=format&fit=crop', description: 'Ensuring efficiency and reliability for modern agricultural equipment.' },
-    { name: 'Defence & Aviation', image: 'https://images.unsplash.com/photo-1515579930-1b7774136615?q=80&w=2670&auto=format&fit=crop', description: 'Supplying critical components for aerospace and defense systems.' },
-    { name: 'Marine & Off-Shore', image: 'https://images.unsplash.com/photo-1558230538-348e3a242f38?q=80&w=2670&auto=format&fit=crop', description: 'Building resilient solutions for challenging marine and offshore operations.' },
+    { name: 'Mobile Hydraulics & Automation', image: 'https://img.freepik.com/free-photo/3d-rendering-hydraulic-elements_23-2149333335.jpg?ga=GA1.1.1154289487.1757069524&semt=ais_hybrid&w=740&q=80', description: 'Powering heavy machinery and precise control systems for mobile applications.' },
+    { name: 'Mining & Power Generation', image: 'https://img.freepik.com/free-photo/aerial-shot-two-power-plant-sunset-vilnius_181624-15104.jpg?ga=GA1.1.1154289487.1757069524&semt=ais_hybrid&w=740&q=80', description: 'Providing robust components for the demanding environments of mining and energy production.' },
+    { name: 'Agriculture Machines', image: 'https://img.freepik.com/free-photo/close-up-seeder-attached-tractor-field_146671-19087.jpg?ga=GA1.1.1154289487.1757069524&semt=ais_hybrid&w=740&q=80', description: 'Ensuring efficiency and reliability for modern agricultural equipment.' },
+    { name: 'Defence & Aviation', image: 'https://img.freepik.com/free-photo/low-angle-shot-b-17-bomber-plane-from-wwii-captured-airbase-sunny-day_181624-26344.jpg?ga=GA1.1.1154289487.1757069524&semt=ais_hybrid&w=740&q=80', description: 'Supplying critical components for aerospace and defense systems.' },
+    { name: 'Marine & Off-Shore', image: 'https://img.freepik.com/free-photo/cargo-ship-parked-harbor-sunny-day-sunset_181624-4056.jpg?ga=GA1.1.1154289487.1757069524&semt=ais_hybrid&w=740&q=80', description: 'Building resilient solutions for challenging marine and offshore operations.' },
+    { name: 'Forestry', image: 'https://img.freepik.com/free-photo/low-angle-shot-piled-logs-with-greenery-background_181624-17565.jpg?ga=GA1.1.1154289487.1757069524&semt=ais_hybrid&w=740&q=80', description: 'Heavy-duty forestry work relies on hydraulic power for both immense strength and precise control.' },
+    { name: 'Tunnel Boring Machine', image: 'https://img.freepik.com/free-photo/vacation-rope-tree-ski-winter_1232-4134.jpg?ga=GA1.1.1154289487.1757069524&semt=ais_hybrid&w=740&q=80', description: 'TBM -The Powering Modern Infrastructure' },
+    { name: 'Manufacturing Equipments', image: 'https://img.freepik.com/free-photo/machines-industrial-building_140725-7605.jpg?ga=GA1.1.1154289487.1757069524&semt=ais_hybrid&w=740&q=80', description: 'Our hydraulic solutions power the precision and automation of modern manufacturing equipment.' },
+    { name: 'Recycling', image: 'https://img.freepik.com/free-photo/crane-grab-scrap_1112-1220.jpg?ga=GA1.1.1154289487.1757069524&semt=ais_hybrid&w=740&q=80', description: 'Our components are vital for the powerful and efficient operation of recycling machinery, from compactors to shredders.' },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -146,7 +157,7 @@ const IndustriesCarousel = () => {
   };
 
   return (
-    <div className="py-20 bg-white">
+    <div className="py-20 bg-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">Industries We Serve</h2>
         <div 
@@ -214,14 +225,73 @@ const IndustriesCarousel = () => {
     </div>
   );
 };
+const ProductsGrid = () => {
+  // Product data array.
+  const products = [
+    {
+      name: "Gear Pumps",
+      image: "https://img.freepik.com/free-photo/rusty-gear-assembly_1136-278.jpg?ga=GA1.1.1674121280.1756620927&semt=ais_hybrid&w=740&q=80"
+    },
+    {
+      name: "Vane Pumps",
+      image: "https://img.freepik.com/free-photo/steel-pipelines-cables-plant_1359-302.jpg?ga=GA1.1.1674121280.1756620927&semt=ais_hybrid&w=740&q=80"
+    },
+    {
+      name: "Piston Pumps",
+      image: "https://img.freepik.com/free-photo/engine-piston-cross-section_1232-2590.jpg?ga=GA1.1.1674121280.1756620927&semt=ais_hybrid&w=740&q=80"
+    },
+     {
+      name: "Intermot Hydro Motor",
+      image: "https://img.freepik.com/free-psd/time-machine-isolated_23-2151870819.jpg?ga=GA1.1.1154289487.1757069524&semt=ais_hybrid&w=740&q=80"
+    },
+    {
+      name: "Caterpillar Hydraulic Pump",
+      image: "https://img.freepik.com/free-photo/old-railwys_181624-32186.jpg?ga=GA1.1.1154289487.1757069524&semt=ais_hybrid&w=740&q=80"
+    },
+    {
+      name: "TM Hydraulic Pump and Motor",
+      image: "https://img.freepik.com/free-photo/spare-part-engine-water-pump-isolated-white_627829-7507.jpg?ga=GA1.1.1154289487.1757069524&semt=ais_hybrid&w=740&q=80"
+    },
+    {
+      name: "Flow Control Valves",
+      image: "https://img.freepik.com/free-vector/realistic-steel-pipeline-system-seamless-pattern_1284-30897.jpg?ga=GA1.1.1674121280.1756620927&semt=ais_hybrid&w=740&q=80"
+    },
+  ];
+  return (
+    <section className="container mx-auto px-4 py-12">
+      <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">Our Products</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        {products.map((product, index) => (
+          <ProductCard key={index} product={product} />
+        ))}
+      </div>
+    </section>
+  );
+};
+
+const ProductCard = ({ product }) => {
+  return (
+    <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
+      <img
+        src={product.image}
+        alt={product.name}
+        className="w-full h-48 object-cover"
+        onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/400x300/e0e0e0/000000?text=Image+Not+Found" }}
+      />
+      <div className="p-6">
+        <h3 className="text-xl font-bold text-gray-900 mb-2">{product.name}</h3>
+        </div>
+    </div>
+  );
+};
 
 // Services Carousel Component
 const ServicesCarousel = () => {
   const services = [
-    { title: 'Repair & Overhaul Services',icon: 'https://placehold.co/64x64/3B82F6/FFFFFF?text=Repair', description: 'Delivering precision-machined components with complex geometries and tight tolerances.' },
-    { title: 'Training', icon: 'https://placehold.co/64x64/3B82F6/FFFFFF?text=Training', description: 'Designing, manufacturing, and servicing high-performance hydraulic systems.' },
-    { title: 'Reconditional Units', icon: 'https://placehold.co/64x64/3B82F6/FFFFFF?text=Units', description: 'Integrating smart automation to optimize production and reduce operational costs.' },
-    { title: 'Annual Maintenance', icon: 'https://placehold.co/64x64/3B82F6/FFFFFF?text=Maintenance', description: 'Offering expert welding and custom metal fabrication services for various applications.' },
+    { title: 'Repair & Overhaul Services', description: 'Delivering precision-machined components with complex geometries and tight tolerances.' },
+    { title: 'Training', description: 'Designing, manufacturing, and servicing high-performance hydraulic systems.' },
+    { title: 'Reconditional Units', description: 'Integrating smart automation to optimize production and reduce operational costs.' },
+    { title: 'Annual Maintenance', description: 'Offering expert welding and custom metal fabrication services for various applications.' },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -243,7 +313,7 @@ const ServicesCarousel = () => {
             {services.map((service, index) => (
               <div key={index} className="w-full flex-shrink-0 p-4">
                 <div className="bg-white p-8 rounded-lg shadow-lg text-center">
-                  <img src={service.icon} alt={service.title} className="h-16 w-16 mx-auto mb-4" />
+                  {/* <img src={service.icon} alt={service.title} className="h-16 w-16 mx-auto mb-4" /> */}
                   <h3 className="text-xl font-bold mb-2">{service.title}</h3>
                   <p className="text-gray-600">{service.description}</p>
                 </div>

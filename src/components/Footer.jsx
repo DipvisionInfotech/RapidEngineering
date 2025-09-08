@@ -12,9 +12,10 @@ export default function Footer() {
               <img src={logo} alt="Company Logo" className="h-17 w-auto" />
               <div>
                 <h3 className="text-xl font-bold">Rapid Engineering Services</h3>
+                <br/>
+                <p>Leading the industry with innovative solutions and quality manufacturing.</p>
               </div>
             </div>
-            <br/>
             <br/>
             <br/>
 
@@ -59,6 +60,11 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2 text-gray-400">
+              <li>
+                <a href="/" className="hover:text-white transition-colors cursor-pointer">
+                Home Page
+                </a>
+              </li>
               <li>
                 <a href="/about" className="hover:text-white transition-colors cursor-pointer">
                 About

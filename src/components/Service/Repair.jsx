@@ -8,7 +8,7 @@ import {
 // Hero Section
 export const HeroSection = () => {
   return (
-    <section className="bg-gradient-to-r from-green-500 via-blue-400 to-gray-500 text-white py-20 pt-28">
+    <section className="bg-gradient-to-r from-green-700 via-blue-500 to-gray-600 text-white py-20 pt-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
@@ -16,6 +16,17 @@ export const HeroSection = () => {
               <Settings className="h-5 w-5 mr-2" />
               <span className="text-sm font-medium">Expert Repair & Overhaul Solutions</span>
             </div>
+            {/* <section className="bg-gradient-to-r from-blue-900/80 to-blue-700/80 text-white py-12 px-6 sm:px-12 md:px-24 bg-cover bg-center relative"
+     style={{backgroundImage: 'url(https://img.freepik.com/free-photo/close-up-image-nut-key-mechanic-s-arm_613910-13714.jpg?ga=GA1.1.1154289487.1757069524&semt=ais_hybrid&w=740&q=80)'}}
+
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <div className="inline-flex items-center px-4 py-2 mb-6 opacity-60">
+              <Settings className="h-5 w-5 mr-2" />
+              <span className="text-sm font-medium">Expert Repair & Overhaul Solutions</span>
+            </div> */}
             
             <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
               Repair & Overhaul Services
@@ -25,16 +36,16 @@ export const HeroSection = () => {
               At Rapid Engineering Services, we provide end-to-end hydraulic repair and overhaul services designed to restore equipment performance, minimize downtime, and extend machinery life.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+            {/* <div className="flex flex-col sm:flex-row gap-4 mb-8">
               <button className="bg border border-white hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold transition-colors flex items-center justify-center">
                 Request Service <ArrowRight className="ml-2 h-5 w-5" />
               </button>
               <button className="border border-white text-white hover:bg-white hover:text-gray-900 px-8 py-3 rounded-lg font-semibold transition-colors">
                 Download Brochure
               </button>
-            </div>
+            </div> */}
             
-            <div className="grid grid-cols-2 gap-6 text-center">
+            {/* <div className="grid grid-cols-2 gap-6 text-center">
               <div>
                 <div className="text-3xl font-bold text-yellow-400">95%</div>
                 <p className="text-sm text-gray-300">First-Time Fix Rate</p>
@@ -43,7 +54,7 @@ export const HeroSection = () => {
                 <div className="text-3xl font-bold text-yellow-400">32+</div>
                 <p className="text-sm text-gray-300">Years Experience</p>
               </div>
-            </div>
+            </div> */}
           </div>
           
           <div className="relative">
