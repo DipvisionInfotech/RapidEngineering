@@ -1,69 +1,26 @@
-import React from 'react';
+import React from "react";
+import IndustryPageTemplate from "../IndustryPageTemplate";
 
-// Inline SVG for the checkmark icon
-const CheckIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    className="w-6 h-6 text-emerald-500 flex-shrink-0"
-  >
-    <path
-      fillRule="evenodd"
-      d="M19.916 4.626a.75.75 0 01.208 1.04l-9.5 13.5a.75.75 0 01-1.168.104l-5.5-5.5a.75.75 0 011.06-1.06l4.97 4.97L19.708 5.66a.75.75 0 011.04-.208z"
-      clipRule="evenodd"
-    />
-  </svg>
+const Defence = () => (
+  <IndustryPageTemplate
+    badge="Tactical & Military Specifications"
+    title="Defence & Aerospace"
+    subtitle="Zero-failure fluid power engineering meeting strict military standards for combat systems, support gear, and naval platforms."
+    bgImage="https://img.freepik.com/free-photo/yellow-jets-maneuvering-sky-air-parade_181624-16775.jpg"
+    aboutTitle="Mission-Critical Reliability Under Extreme Conditions"
+    aboutText={[
+      "Military, naval, and aerospace hydraulics demand absolute reliability under extreme shock loads, rapid thermal cycles, and high pressure. Components must operate flawlessly to ensure the safety of tactical personnel and success of critical missions.",
+      "Rapid Engineering Services is an ISO 9001:2015 certified facility providing specialized diagnostics, component reverse engineering, and military-grade cylinder rebuilding. We utilize non-destructive testing (NDT) and hold complete material traceability records for every defence sector contract."
+    ]}
+    aboutImage="https://img.freepik.com/free-photo/low-angle-shot-b-17-bomber-plane-from-wwii-captured-airbase-sunny-day_181624-26344.jpg"
+    features={["MIL-Spec Valve Calibration", "Obsolete Component Engineering", "Non-Destructive Testing", "Material Traceability Logs", "Shock-Resistant Seals", "High-Pressure System Audits"]}
+    highlights={[
+      { title: "Rigorous Load Simulation", desc: "Every rebuilt tactical valve is tested under simulated combat pressure and thermal stress." },
+      { title: "Legacy Platform Support", desc: "Expert reverse engineering of discontinued hydraulic parts for legacy defence equipment." },
+      { title: "Strict Quality Control", desc: "Every component is logged, tracked, and certified with strict compliance documentation." }
+    ]}
+    equipmentList={["Armored Combat Vehicles", "Naval Weapon Actuators", "Missile Launcher Hydraulics", "Aircraft Ground Support Units", "Radar Positioning Drives", "Tactical Support Vehicles"]}
+  />
 );
-
-// Main App component to contain the entire page structure
-export const Defence = () => {
-  return (
-    <div className="bg-gray-50 font-sans text-gray-800">
-      {/* Header/Hero Section */}
-      <header className="bg-gradient-to-r from-blue-900/80 to-blue-700/80 text-white py-12 px-6 sm:px-12 md:px-24 bg-cover bg-center relative"
-                style={{ backgroundImage: 'url(https://img.freepik.com/free-photo/yellow-jets-maneuvering-sky-air-parade_181624-16775.jpg?ga=GA1.1.1154289487.1757069524&semt=ais_hybrid&w=740&q=80)' }}
-            >
-        <div className="absolute inset-0 bg-blue-900 opacity-60"></div>
-                <div className="max-w-7xl mx-auto text-center py-16 sm:py-24 relative z-10">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4">
-            Defence & Aviation
-          </h1>
-          <p className="text-lg sm:text-xl font-light max-w-3xl mx-auto opacity-90">
-            Precision hydraulic components for critical applications in the defence & aviation industry.
-          </p>
-        </div>
-      </header>
-
-      {/* Main Content Section */}
-      <main>
-        {/* About Section - Defence & Aviation */}
-        <section className="py-16 sm:py-24 px-6 md:px-24">
-          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
-            <div className="w-full md:w-1/2">
-              {/* Placeholder image for the section's visual */}
-              <img
-                src="https://img.freepik.com/free-photo/low-angle-shot-b-17-bomber-plane-from-wwii-captured-airbase-sunny-day_181624-26344.jpg?ga=GA1.1.1154289487.1757069524&semt=ais_hybrid&w=740&q=80"
-                alt="Defence and Aviation equipment"
-                className="w-full h-auto rounded-xl shadow-2xl"
-              />
-            </div>
-            <div className="w-full md:w-1/2 text-center md:text-left">
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-                Defence & Aviation
-              </h2>
-              <p className="text-lg text-gray-600 leading-relaxed mb-4">
-                The defence and aviation sectors require hydraulic systems that are precise, reliable, and able to operate in extreme conditions.
-              </p>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                We specialize in manufacturing hydraulic components that meet the rigorous standards and certifications demanded by this industry, ensuring mission-critical performance.
-              </p>
-            </div>
-          </div>
-        </section>
-      </main>
-    </div>
-  );
-};
 
 export default Defence;

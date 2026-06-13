@@ -1,164 +1,181 @@
-import { useState } from "react";
-import { MapPin, Phone, Mail, Facebook,Instagram,Twitter,Linkedin} from "lucide-react";
-  
-const ContactPage = () => {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    message: ''
-  });
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { MapPin, Phone, Mail, Clock, Facebook, Instagram, Twitter, Linkedin, Send, MessageSquare } from "lucide-react";
+import PageHero from "../components/PageHero";
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
+const inputClass =
+  "w-full px-4 py-3.5 border border-slate-200 rounded-xl text-sm text-slate-800 bg-[#F4F7FA] focus:outline-none focus:border-[#0B3D4E] focus:bg-white transition-all duration-200 placeholder:text-slate-400";
+
+const ContactPage = () => {
+  const [form, setForm] = useState({ firstName: "", lastName: "", email: "", phone: "", company: "", subject: "", message: "" });
+  const [sent, setSent] = useState(false);
+
+  const handleChange = (e) => setForm((p) => ({ ...p, [e.target.name]: e.target.value }));
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! We will get back to you soon.');
-    setFormData({
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      message: ''
-    });
+    setSent(true);
+    setTimeout(() => setSent(false), 5000);
+    setForm({ firstName: "", lastName: "", email: "", phone: "", company: "", subject: "", message: "" });
   };
+
   return (
-        <div className="bg-gray-50 font-sans text-gray-800">
-      {/* Header/Hero Section with Background Image */}
-      <header
-        className="bg-gradient-to-r from-blue-900/80 to-blue-700/80 text-white bg-cover bg-center relative"
-        style={{ backgroundImage: 'url(https://media.istockphoto.com/id/2044799300/photo/contact-us-puzzle-piece.webp?a=1&b=1&s=612x612&w=0&k=20&c=gpYNhO8hTu6aXRGnEJdU5R5QCxgjjS6ND9mnGT6Km28=)' }}
-      >
-        <div className="absolute inset-0 bg-blue-900 opacity-60"></div>
-        <div className="max-w-7xl mx-auto text-center py-16 sm:py-24 relative z-10">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4">
-            Contact Us
-          </h1>
-          <p className="text-lg sm:text-xl font-light max-w-3xl mx-auto opacity-90">
-            Get in touch with our team for quotes, questions, or partnership opportunities.
-          </p>
-          </div>
-      </header>
+    <div className="bg-white">
+      <PageHero
+       
+        title="Contact Us"
+        subtitle="Reach out for repair quotes, technical queries, training enquiries, or partnership opportunities."
+        bgImage="https://img.freepik.com/free-photo/close-up-image-nut-key-mechanic-s-arm_613910-13714.jpg"
         
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <div className="bg-white rounded-xl p-8 shadow-lg">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Send us your query</h2>
-            <div className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
-                  <input 
-                    type="text" 
-                    name="firstName"
-                    value={formData.firstName}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
-                  />
+      />
+
+      <section className="py-20 bg-[#F4F7FA]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-[360px_1fr] gap-8">
+
+            {/* Info */}
+            <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }} className="flex flex-col gap-5">
+
+              {/* Contact card */}
+              <div className="bg-[#0B3D4E] rounded-2xl p-7 relative overflow-hidden">
+                <div className="absolute -right-8 -bottom-8 w-40 h-40 rounded-full bg-white/4" />
+                <div className="absolute -left-4 -top-4 w-20 h-20 rounded-full bg-orange-500/8" />
+
+                <p className="text-orange-400 text-[10px] font-bold tracking-widest uppercase mb-4 relative z-10">Direct Contact</p>
+                <div className="space-y-5 relative z-10">
+                  {[
+                    { icon: Phone,  label: "Call Us",      value: "+91 99999 99999",    href: "tel:+919999999999" },
+                    { icon: Mail,   label: "Email Us",     value: "info@rapidengg.com", href: "mailto:info@rapidengg.com" },
+                    { icon: MapPin, label: "Visit Us",     value: "Delhi, India" },
+                    { icon: Clock,  label: "Office Hours", value: "Mon–Sat, 9 AM – 6 PM" },
+                  ].map(({ icon: Icon, label, value, href }) => (
+                    <div key={label} className="flex items-start gap-3.5">
+                      <div className="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
+                        <Icon size={16} className="text-orange-400" />
+                      </div>
+                      <div>
+                        <p className="text-white/40 text-[10px] font-semibold uppercase tracking-wider">{label}</p>
+                        {href ? (
+                          <a href={href} className="text-white text-sm font-medium hover:text-orange-400 transition-colors">{value}</a>
+                        ) : (
+                          <p className="text-white text-sm font-medium">{value}</p>
+                        )}
+                      </div>
+                    </div>
+                  ))}
                 </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
-                  <input 
-                    type="text" 
-                    name="lastName"
-                    value={formData.lastName}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
-                  />
-                </div>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                <input 
-                  type="email" 
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Phone</label>
-                <input 
-                  type="tel" 
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Type your query here!</label>
-                <textarea 
-                  rows="4" 
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                ></textarea>
-              </div>
-              <button 
-                onClick={handleSubmit}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
-              >
-                Submit
-              </button>
-            </div>
-          </div>
-          
-          {/* Contact Information */}
-          <div className="space-y-8">
-            <div className="bg-blue-50 rounded-xl p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Get in Touch</h2>
-              <div className="space-y-6">
-                <div className="flex items-start">
-                  <MapPin className="h-6 w-6 text-blue-600 mt-1 mr-4" />
-                  <div>
-                    <h3 className="font-semibold text-gray-900">Address</h3>
-                    <p className="text-gray-600 hover:text-black transition-colors">
-                      Delhi
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <Phone className="h-6 w-6 text-blue-600 mt-1 mr-4" />
-                  <div>
-                    <h3 className="font-semibold text-gray-900">Phone</h3>
-                    <a href="tel:+919999999999">
-                    <p className="text-gray-600 hover:text-black transition-colors">+919999999999</p>
+
+                <div className="mt-7 pt-5 border-t border-white/10 flex gap-2.5 relative z-10">
+                  {[
+                    { icon: Facebook, href: "https://facebook.com/" },
+                    { icon: Instagram, href: "https://instagram.com/" },
+                    { icon: Twitter, href: "https://x.com/" },
+                    { icon: Linkedin, href: "https://linkedin.com/" },
+                  ].map(({ icon: Icon, href }) => (
+                    <a key={href} href={href} target="_blank" rel="noopener noreferrer"
+                      className="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center text-white/50 hover:bg-[#E8620A] hover:text-white transition-all">
+                      <Icon size={15} />
                     </a>
+                  ))}
+                </div>
+              </div>
+
+              {/* FAQ-style boxes */}
+              {[
+                { title: "Repair Enquiries", body: "Please include your equipment brand, model, and the issue you're experiencing." },
+                { title: "Training Programmes", body: "Let us know the number of participants and preferred training dates." },
+                { title: "Emergency Breakdown", body: "Call us directly on our hotline for fastest response. We prioritise critical failures." },
+              ].map((faq) => (
+                <div key={faq.title} className="bg-white rounded-xl p-5 border border-slate-200">
+                  <p className="font-bold text-[#0B3D4E] text-sm mb-1.5">{faq.title}</p>
+                  <p className="text-slate-500 text-xs leading-relaxed">{faq.body}</p>
+                </div>
+              ))}
+            </motion.div>
+
+            {/* Form */}
+            <motion.div initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-slate-200/80">
+
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-10 h-10 rounded-xl bg-[#E8620A]/10 flex items-center justify-center">
+                  <MessageSquare size={19} className="text-[#E8620A]" />
+                </div>
+                <div>
+                  <h2 className="text-[#0B3D4E] font-bold text-xl" style={{ fontFamily: "'Syne',sans-serif" }}>Send Us a Message</h2>
+                  <p className="text-slate-400 text-xs">We respond within 24 business hours</p>
+                </div>
+              </div>
+              <div className="h-px bg-slate-100 my-6" />
+
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div className="grid sm:grid-cols-2 gap-5">
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-500 mb-1.5">First Name *</label>
+                    <input type="text" name="firstName" value={form.firstName} onChange={handleChange}
+                      placeholder="John" required className={inputClass} />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-500 mb-1.5">Last Name *</label>
+                    <input type="text" name="lastName" value={form.lastName} onChange={handleChange}
+                      placeholder="Doe" required className={inputClass} />
                   </div>
                 </div>
-                <div className="flex items-start">
-                  <Mail className="h-6 w-6 text-blue-600 mt-1 mr-4" />
+                <div className="grid sm:grid-cols-2 gap-5">
                   <div>
-                    <h3 className="font-semibold text-gray-900">Email</h3>
-                    <a href="mailto:info@rapidengg.com">
-                    <p className="text-gray-600 hover:text-black transition-colors">info@rapidengg.com</p>
-                    </a>
+                    <label className="block text-xs font-semibold text-slate-500 mb-1.5">Email Address *</label>
+                    <input type="email" name="email" value={form.email} onChange={handleChange}
+                      placeholder="john@company.com" required className={inputClass} />
                   </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-500 mb-1.5">Phone Number</label>
+                    <input type="tel" name="phone" value={form.phone} onChange={handleChange}
+                      placeholder="+91 99999 99999" className={inputClass} />
                   </div>
-              </div>
-                  {/* Social media links added here */}
-             <div className="grid grid-cols-4 gap-2">
-                <a className="flex items-center justify-center gap-2 rounded-2xl border border-slate-200 p-3 hover:text-green-500 transition-colors"  href="https://www.facebook.com/"><Facebook className="h-4 w-4"/></a>
-                <a className="flex items-center justify-center gap-2 rounded-2xl border border-slate-200 p-3 hover:text-green-500 transition-colors" href="https://www.instagram.com/"><Instagram className="h-4 w-4"/></a>
-                <a className="flex items-center justify-center gap-2 rounded-2xl border border-slate-200 p-3 hover:text-green-500 transition-colors" href="https://x.com/"><Twitter className="h-4 w-4"/></a>
-                <a className="flex items-center justify-center gap-2 rounded-2xl border border-slate-200 p-3 hover:text-green-500 transition-colors" href="https://www.linkedin.com/"><Linkedin className="h-4 w-4"/></a>
-              </div>
-            </div>
+                </div>
+                <div className="grid sm:grid-cols-2 gap-5">
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-500 mb-1.5">Company Name</label>
+                    <input type="text" name="company" value={form.company} onChange={handleChange}
+                      placeholder="Your Company" className={inputClass} />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-500 mb-1.5">Subject</label>
+                    <select name="subject" value={form.subject} onChange={handleChange} className={inputClass}>
+                      <option value="">Select a subject</option>
+                      <option>Repair & Overhaul Enquiry</option>
+                      <option>Technical Training Enquiry</option>
+                      <option>Reconditioned Units</option>
+                      <option>Annual Maintenance Contract</option>
+                      <option>Product / Parts Enquiry</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-slate-500 mb-1.5">Your Message *</label>
+                  <textarea name="message" value={form.message} onChange={handleChange} rows={6}
+                    placeholder="Please describe your hydraulic system issue, equipment type, brand, and urgency level..."
+                    required className={`${inputClass} resize-none`} />
+                </div>
+                <button type="submit"
+                  className="w-full flex items-center justify-center gap-2.5 bg-[#E8620A] hover:bg-[#F47A2A] text-white py-4 rounded-xl font-semibold text-[15px] transition-all hover:-translate-y-0.5 shadow-lg shadow-orange-200">
+                  {sent ? (
+                    <><span className="w-2 h-2 rounded-full bg-white animate-pulse" /> Thank you! We'll be in touch soon.</>
+                  ) : (
+                    <><Send size={17} /> Send Message</>
+                  )}
+                </button>
+              </form>
+            </motion.div>
+
           </div>
         </div>
-      </div>
+      </section>
+    </div>
   );
 };
+
 export default ContactPage;

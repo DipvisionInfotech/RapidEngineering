@@ -1,11 +1,8 @@
-import React from 'react'
-import Defence from '../components/Industries/Defence'
+import React from "react";
+import Defence from "../components/Industries/Defence";
 
-export const Industries_Defence = () => {
-  return (
-    <div>
-        <Defence/>
-    </div>
-  )
-}
-export default Defence;
+const Industries_Defence = () => {
+  return <Defence />;
+};
+
+export default Industries_Defence;

@@ -1,187 +1,542 @@
-import React, { useState } from "react";
-import { ChevronDown, Menu, X, Plus, Minus, Phone } from "lucide-react";
-import { Link } from "react-router-dom";
-import Logosection from "./Logosection";
-import logo from "../assets/react.svg";
-
-const Navbar = () => {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [openCategory, setOpenCategory] = useState(null);
-  const [openSubCategory, setOpenSubCategory] = useState(null); // NEW: For inner accordions
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { ChevronDown, Menu, X, Phone, ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const industries = [
-    { to: "mobile_hydraulics/", label: "Mobile Hydraulics & Automation" },
-    { to: "mining_power_generation/", label: "Mining & Power Generation" },
-    { to: "agriculture_machines/", label: "Agriculture Machines" },
-    { to: "defence_aviation/", label: "Defence & Avaiation" },
-    { to: "marine_offshore/", label: "Marine & Off-Shore" },
-    { to: "forestry/", label: "Forestry" },
-    { to: "tunnel/", label: "Tunnel Boring Machines" },
-    { to: "manufacturing/", label: "Manufacturing Equipments" },
-    { to: "recycling/", label: "Recycling"},
-    
-  ];
- 
-  const services = [
-    { to: "service_repair/", label: "Repair & Overhaul Services" },
-    { to: "technical_training/", label: "Technical Training & Mentorship" },
-    { to: "/units", label: "Reconditioned Units" },
-    { to: "/annual_contracts", label: "Annual Maintenance Contracts" },
-  ];
-  return (
-    <nav className="bg-white sticky top-0 z-50 shadow-md">
-      <div className="container mx-auto flex items-center justify-between p-1">
-        <Logosection />
+  { to: "/mobile_hydraulics",        label: "Mobile Hydraulics & Automation" },
+  { to: "/mining_power_generation",  label: "Mining & Power Generation" },
+  { to: "/agriculture_machines",     label: "Agriculture Machines" },
+  { to: "/defence_aviation",         label: "Defence & Aviation" },
+  { to: "/marine_offshore",          label: "Marine & Off-Shore" },
+  { to: "/forestry",                 label: "Forestry" },
+  { to: "/tunnel",                   label: "Tunnel Boring Machines" },
+  { to: "/manufacturing",            label: "Manufacturing Equipments" },
+  { to: "/recycling",                label: "Recycling" },
+];
 
-        {/* Desktop Menu */}
-        <ul className="hidden lg:flex space-x-6 items-center">
-          <li>
-            <Link to="/" className="text-gray-700 hover:text-blue-900">
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link to="about" className="text-gray-700 hover:text-blue-900">
-              About
-            </Link>
-          </li>
-          <li className="relative group">
-            <button className="flex items-center text-gray-700 hover:text-blue-900">
-              Services <ChevronDown className="w-4 h-4 ml-1 mt-1" />
-            </button>
-           <div className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 min-w-[250px]">
-              <ul className="py-2">
-                {services.map((service, idx) => (
-                  <li key={idx}>
-                    <Link
-                      to={service.to}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-100"
-                    >
-                      {service.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </li>
-          <li className="relative group">
-            <button className="flex items-center text-gray-700 hover:text-blue-900">
-              Industries <ChevronDown className="w-4 h-4 ml-1 mt-1" />
-            </button>
-             <div className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 min-w-[250px]">
-              <ul className="py-2">
-                {industries.map((service, idx) => (
-                  <li key={idx}>
-                    <Link
-                      to={service.to}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-100"
-                    >
-                      {service.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </li>
-          <li>
-            <Link to="product" className="text-gray-700 hover:text-blue-900">
-              Products
-            </Link>
-          </li>
-          <li>
-            <Link to="contact" className="text-gray-700 hover:text-blue-900">
-              Contact Us
-            </Link>
-          </li>
-        </ul>
+const services = [
+  { to: "/service_repair",     label: "Repair & Overhaul Services",      desc: "Full component repair & testing" },
+  { to: "/technical_training", label: "Technical Training & Mentorship",  desc: "Hands-on hydraulics training" },
+  { to: "/units",              label: "Reconditioned Units",              desc: "Cost-effective quality units" },
+  { to: "/annual_contracts",   label: "Annual Maintenance Contracts",     desc: "Scheduled preventive care" },
+];
 
-        {/* WhatsApp Button (Desktop) */}
-        <div className="hidden md:flex items-center space-x-6">
-          <button className="flex items-center space-x-1 bg-gradient-to-r from-blue-400 to-indigo-500 text-white px-3 py-3 rounded-xl hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5">
-            {/* <img src={logo} alt="WhatsApp Logo" className="w-6 h-6" /> */}
-             <Phone className="w-4 h-4 mr-3" />
-             <a href="tel:+919999999999">Call Now</a>
-            {/* <span className="font-medium">+91 9999999999</span> */}
-          </button>
-        </div>
+/* ── Mega dropdown for Services ── */
+/* ── Clean Minimal Dropdowns ── */
 
-        {/* Mobile Hamburger */}
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="lg:hidden text-gray-700 hover:text-blue-900"
+const ServicesDropdown = () => (
+  <div
+    className="
+      absolute
+      top-[calc(100%+14px)]
+      left-1/2
+      -translate-x-1/2
+      w-[340px]
+      rounded-2xl
+      bg-white
+      border border-slate-100
+      shadow-[0_24px_70px_rgba(0,0,0,0.12)]
+      z-50
+      px-8
+      py-6
+    "
+  >
+    <h3
+      className="
+        text-[12px]
+        uppercase
+        tracking-[0.22em]
+        font-semibold
+        text-[#E8620A]
+        mb-5
+      "
+    >
+      Services
+    </h3>
+
+    <div className="space-y-3">
+
+      {services.map((item) => (
+        <Link
+          key={item.to}
+          to={item.to}
+          className="
+            group
+            flex
+            items-center
+            gap-4
+            pl-2
+            py-2
+            text-[14px]
+            font-medium
+            text-slate-700
+            hover:text-[#E8620A]
+            transition-all
+          "
         >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
+          <span
+            className="
+              w-[6px]
+              h-[6px]
+              rounded-full
+              bg-[#E8620A]
+              flex-shrink-0
+              ml-2
+              group-hover:scale-150
+              transition
+            "
+          />
 
-     {/* Mobile Menu */}
-      {mobileOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200">
-          <ul className="px-4 py-2 space-y-2">
-            <li>
-              <Link to="/" className="block py-2" onClick={() => setMobileOpen(false)}>
-                Home
-              </Link>
-            </li>
-            <li>
-              <span className="block py-2 font-semibold">Services</span>
-              <div className="pl-4 space-y-1">
-                {services.map((service, idx) => (
-                  <Link
-                    key={idx}
-                    to={service.to}
-                    className="block py-1 text-gray-700 hover:text-blue-900"
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    {service.label}
-                  </Link>
-                ))}
-              </div>
-            </li>
-            <li>
-              <Link to="/about" className="block py-2" onClick={() => setMobileOpen(false)}>
-                About
-              </Link>
-            </li>
-            <li>
-              <Link to="/product" className="block py-2" onClick={() => setMobileOpen(false)}>
-                Products
-              </Link>
-            </li>
-            <li>
-              <Link to="/contact" className="block py-2" onClick={() => setMobileOpen(false)}>
-                Contact Us
-              </Link>
-            </li>
-          </ul>
-        </div>
-      )
-}
-    </nav>
-  );
-};
+          <span>{item.label}</span>
+        </Link>
+      ))}
 
-const CategoryAccordion = ({ category, isOpen, onToggle, closeMenu }) => {
-  return (
-    <div>
-      <button onClick={onToggle} className="flex justify-between w-full py-2">
-        {category.name} {isOpen ? <Minus /> : <Plus />}
-      </button>
-      {isOpen && category.sub.length > 0 && (
-        <div className="pl-4">
-          {category.sub.map((sub, idx) => (
-            <Link
-              to={sub.to}
-              key={idx}
-              className="block py-1"
-              onClick={closeMenu}
-            >
-              {sub.label}
-            </Link>
-          ))}
-        </div>
-      )}
     </div>
+  </div>
+);
+
+
+const IndustriesDropdown = () => (
+  <div
+    className="
+      absolute
+      top-[calc(100%+14px)]
+      left-1/2
+      -translate-x-1/2
+      w-[340px]
+      rounded-2xl
+      bg-white
+      border border-slate-100
+      shadow-[0_24px_70px_rgba(0,0,0,0.12)]
+      z-50
+      px-8
+      py-6
+    "
+  >
+    <h3
+      className="
+        text-[12px]
+        uppercase
+        tracking-[0.22em]
+        font-semibold
+        text-[#E8620A]
+        mb-5
+      "
+    >
+      Industries
+    </h3>
+
+    <div className="space-y-3">
+
+      {industries.map((item) => (
+        <Link
+          key={item.to}
+          to={item.to}
+          className="
+            group
+            flex
+            items-center
+            gap-4
+            pl-2
+            py-2
+            text-[14px]
+            font-medium
+            text-slate-700
+            hover:text-[#E8620A]
+            transition-all
+          "
+        >
+          <span
+            className="
+              w-[6px]
+              h-[6px]
+              rounded-full
+              bg-[#E8620A]
+              flex-shrink-0
+              ml-2
+              group-hover:scale-150
+              transition
+            "
+          />
+
+          <span>{item.label}</span>
+        </Link>
+      ))}
+
+    </div>
+  </div>
+);
+
+
+const Navbar = () => {
+  const [mobileOpen, setMobileOpen]             = useState(false);
+  const [scrolled, setScrolled]                 = useState(false);
+  const [mobileServices, setMobileServices]     = useState(false);
+  const [mobileIndustries, setMobileIndustries] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    const fn = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", fn, { passive: true });
+    fn(); // run once on mount
+    return () => window.removeEventListener("scroll", fn);
+  }, []);
+
+  useEffect(() => { setMobileOpen(false); }, [location]);
+
+  const isActive = (path) => location.pathname === path;
+
+  return (
+    <>
+      {/* ── Main nav ── */}
+      <nav
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 9999,
+          background: scrolled
+            ? "rgba(11, 61, 78, 0.95)"
+            : "transparent",
+          boxShadow: scrolled ? "0 4px 32px rgba(0,0,0,0.28)" : "none",
+          backdropFilter: scrolled ? "blur(12px)" : "none",
+          transition: "background 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease",
+          borderBottom: scrolled ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(255,255,255,0.04)",
+        }}
+      >
+        <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>
+          <div style={{ height: "68px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "32px" }}>
+
+            {/* Logo */}
+            <Link to="/" style={{ display: "flex", alignItems: "center", gap: "12px", flexShrink: 0, textDecoration: "none" }}>
+              
+              <div style={{ lineHeight: 1 }}>
+                <p style={{ color: "#fff", fontWeight: 700, fontSize: "17px", letterSpacing: "-0.3px", fontFamily: "'Syne',sans-serif" }}>
+                  Rapid Engineering
+                </p>
+                <p style={{ color: "rgba(255,255,255,0.45)", fontSize: "10px", letterSpacing: "0.18em", textTransform: "uppercase", marginTop: "3px" }}>
+                  Services
+                </p>
+              </div>
+            </Link>
+
+            {/* Desktop links */}
+            <ul style={{ display: "flex", alignItems: "center", gap: "4px", flex: 1, justifyContent: "center", listStyle: "none", padding: 0, margin: 0 }}
+              className="hidden lg:flex">
+              
+              {/* Home */}
+              <li>
+                <Link to="/" style={{
+                  padding: "8px 14px",
+                  borderRadius: "10px",
+                  fontSize: "13.5px",
+                  fontWeight: 500,
+                  color: isActive("/") ? "#F47A2A" : "rgba(255,255,255,0.82)",
+                  background: isActive("/") ? "rgba(255,255,255,0.08)" : "transparent",
+                  textDecoration: "none",
+                  transition: "all 0.2s ease",
+                  display: "block",
+                }}
+                  onMouseEnter={(e) => { if (!isActive("/")) { e.target.style.color = "#fff"; e.target.style.background = "rgba(255,255,255,0.08)"; } }}
+                  onMouseLeave={(e) => { if (!isActive("/")) { e.target.style.color = "rgba(255,255,255,0.82)"; e.target.style.background = "transparent"; } }}
+                >
+                  Home
+                </Link>
+              </li>
+
+              {/* About */}
+              <li>
+                <Link to="/about" style={{
+                  padding: "8px 14px",
+                  borderRadius: "10px",
+                  fontSize: "13.5px",
+                  fontWeight: 500,
+                  color: isActive("/about") ? "#F47A2A" : "rgba(255,255,255,0.82)",
+                  background: isActive("/about") ? "rgba(255,255,255,0.08)" : "transparent",
+                  textDecoration: "none",
+                  transition: "all 0.2s ease",
+                  display: "block",
+                }}
+                  onMouseEnter={(e) => { if (!isActive("/about")) { e.target.style.color = "#fff"; e.target.style.background = "rgba(255,255,255,0.08)"; } }}
+                  onMouseLeave={(e) => { if (!isActive("/about")) { e.target.style.color = "rgba(255,255,255,0.82)"; e.target.style.background = "transparent"; } }}
+                >
+                  About
+                </Link>
+              </li>
+
+              {/* Services dropdown */}
+              <li style={{ position: "relative" }} className="group">
+                <button className="flex items-center gap-1 text-white/82 hover:text-white hover:bg-white/8 transition-all"
+                  style={{ padding: "8px 14px", borderRadius: "10px", fontSize: "13.5px", fontWeight: 500, border: "none", background: "transparent", cursor: "pointer", color: "rgba(255,255,255,0.82)" }}>
+                  Services <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-200 mt-px" />
+                </button>
+                <div className="opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 delay-75">
+                  <ServicesDropdown />
+                </div>
+              </li>
+
+              {/* Industries dropdown */}
+              <li style={{ position: "relative" }} className="group">
+                <button className="flex items-center gap-1 hover:text-white transition-all"
+                  style={{ padding: "8px 14px", borderRadius: "10px", fontSize: "13.5px", fontWeight: 500, border: "none", background: "transparent", cursor: "pointer", color: "rgba(255,255,255,0.82)" }}>
+                  Industries <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-200 mt-px" />
+                </button>
+                <div className="opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 delay-75">
+                  <IndustriesDropdown />
+                </div>
+              </li>
+
+              {/* Products */}
+              <li>
+                <Link to="/product" style={{
+                  padding: "8px 14px",
+                  borderRadius: "10px",
+                  fontSize: "13.5px",
+                  fontWeight: 500,
+                  color: isActive("/product") ? "#F47A2A" : "rgba(255,255,255,0.82)",
+                  background: isActive("/product") ? "rgba(255,255,255,0.08)" : "transparent",
+                  textDecoration: "none",
+                  transition: "all 0.2s ease",
+                  display: "block",
+                }}
+                  onMouseEnter={(e) => { if (!isActive("/product")) { e.target.style.color = "#fff"; e.target.style.background = "rgba(255,255,255,0.08)"; } }}
+                  onMouseLeave={(e) => { if (!isActive("/product")) { e.target.style.color = "rgba(255,255,255,0.82)"; e.target.style.background = "transparent"; } }}
+                >
+                  Products
+                </Link>
+              </li>
+
+              {/* Contact */}
+              <li>
+                <Link to="/contact" style={{
+                  padding: "8px 14px",
+                  borderRadius: "10px",
+                  fontSize: "13.5px",
+                  fontWeight: 500,
+                  color: isActive("/contact") ? "#F47A2A" : "rgba(255,255,255,0.82)",
+                  background: isActive("/contact") ? "rgba(255,255,255,0.08)" : "transparent",
+                  textDecoration: "none",
+                  transition: "all 0.2s ease",
+                  display: "block",
+                }}
+                  onMouseEnter={(e) => { if (!isActive("/contact")) { e.target.style.color = "#fff"; e.target.style.background = "rgba(255,255,255,0.08)"; } }}
+                  onMouseLeave={(e) => { if (!isActive("/contact")) { e.target.style.color = "rgba(255,255,255,0.82)"; e.target.style.background = "transparent"; } }}
+                >
+                  Contact
+                </Link>
+              </li>
+            </ul>
+
+            {/* Desktop CTA */}
+            <div className="hidden lg:flex items-center gap-3">
+              
+              <Link to="/contact" style={{
+                display: "flex", alignItems: "center", gap: "8px",
+                background: "#E8620A",
+                color: "#fff", borderRadius: "12px",
+                padding: "10px 20px", fontSize: "13.5px", fontWeight: 600,
+                textDecoration: "none",
+                boxShadow: "0 4px 16px rgba(232,98,10,0.35)",
+                transition: "all 0.2s ease",
+              }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = "#F47A2A"; e.currentTarget.style.transform = "translateY(-2px)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = "#E8620A"; e.currentTarget.style.transform = "translateY(0)"; }}
+              >
+                Get a Quote
+              </Link>
+            </div>
+
+            {/* Mobile toggle */}
+            <button onClick={() => setMobileOpen(!mobileOpen)}
+              className="lg:hidden"
+              style={{ color: "#fff", padding: "6px", borderRadius: "8px", border: "none", background: "transparent", cursor: "pointer" }}
+              aria-label="Menu">
+              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+
+          </div>
+        </div>
+      </nav>
+
+      {/* ── Mobile drawer ── */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+              style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.5)", zIndex: 10000, backdropFilter: "blur(4px)" }}
+              onClick={() => setMobileOpen(false)} />
+
+            <motion.div
+              initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }}
+              transition={{ type: "spring", stiffness: 320, damping: 32 }}
+              style={{
+                position: "fixed", right: 0, top: 0, height: "100vh",
+                width: "320px", background: "#fff", zIndex: 10001,
+                boxShadow: "-8px 0 40px rgba(0,0,0,0.2)",
+                display: "flex", flexDirection: "column",
+              }}>
+
+              {/* Drawer header */}
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "20px 24px", background: "#0B3D4E" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                  <div style={{ height: "32px", width: "32px", borderRadius: "10px", background: "#E8620A", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5">
+                      <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                      <path d="M2 17l10 5 10-5" />
+                      <path d="M2 12l10 5 10-5" />
+                    </svg>
+                  </div>
+                  <span style={{ color: "#fff", fontWeight: 700, fontSize: "15px", fontFamily: "'Syne',sans-serif" }}>Rapid Engineering</span>
+                </div>
+                <button onClick={() => setMobileOpen(false)} style={{ color: "rgba(255,255,255,0.6)", border: "none", background: "transparent", cursor: "pointer" }}>
+                  <X size={22} />
+                </button>
+              </div>
+
+              {/* Nav items */}
+              <nav style={{ flex: 1, overflowY: "auto", padding: "20px 16px" }}>
+                <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+                  
+                  {/* Home */}
+                  <Link to="/" style={{
+                    display: "flex", alignItems: "center", justifyContent: "space-between",
+                    padding: "12px 16px", borderRadius: "12px", fontWeight: 500, fontSize: "14px",
+                    textDecoration: "none",
+                    background: isActive("/") ? "#0B3D4E" : "transparent",
+                    color: isActive("/") ? "#fff" : "#334155",
+                    transition: "all 0.2s",
+                  }}>
+                    Home
+                    <ArrowRight size={14} style={{ opacity: 0.4 }} />
+                  </Link>
+
+                  {/* About */}
+                  <Link to="/about" style={{
+                    display: "flex", alignItems: "center", justifyContent: "space-between",
+                    padding: "12px 16px", borderRadius: "12px", fontWeight: 500, fontSize: "14px",
+                    textDecoration: "none",
+                    background: isActive("/about") ? "#0B3D4E" : "transparent",
+                    color: isActive("/about") ? "#fff" : "#334155",
+                    transition: "all 0.2s",
+                  }}>
+                    About
+                    <ArrowRight size={14} style={{ opacity: 0.4 }} />
+                  </Link>
+
+                  {/* Services accordion */}
+                  <div>
+                    <button onClick={() => setMobileServices(!mobileServices)} style={{
+                      display: "flex", alignItems: "center", justifyContent: "space-between",
+                      width: "100%", padding: "12px 16px", borderRadius: "12px",
+                      fontSize: "14px", fontWeight: 500, color: "#334155",
+                      border: "none", background: "transparent", cursor: "pointer",
+                    }}>
+                      Services
+                      <ChevronDown size={14} style={{ transform: mobileServices ? "rotate(180deg)" : "none", transition: "transform 0.2s" }} />
+                    </button>
+                    <AnimatePresence>
+                      {mobileServices && (
+                        <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.25 }}
+                          style={{ overflow: "hidden", paddingLeft: "12px" }}>
+                          {services.map((s) => (
+                            <Link key={s.to} to={s.to} style={{
+                              display: "block", padding: "10px 16px", borderRadius: "10px",
+                              fontSize: "13.5px", color: "#475569", textDecoration: "none",
+                              transition: "all 0.2s",
+                            }}
+                              onMouseEnter={(e) => { e.currentTarget.style.color = "#E8620A"; e.currentTarget.style.background = "#F4F7FA"; }}
+                              onMouseLeave={(e) => { e.currentTarget.style.color = "#475569"; e.currentTarget.style.background = "transparent"; }}
+                            >
+                              {s.label}
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+
+                  {/* Industries accordion */}
+                  <div>
+                    <button onClick={() => setMobileIndustries(!mobileIndustries)} style={{
+                      display: "flex", alignItems: "center", justifyContent: "space-between",
+                      width: "100%", padding: "12px 16px", borderRadius: "12px",
+                      fontSize: "14px", fontWeight: 500, color: "#334155",
+                      border: "none", background: "transparent", cursor: "pointer",
+                    }}>
+                      Industries
+                      <ChevronDown size={14} style={{ transform: mobileIndustries ? "rotate(180deg)" : "none", transition: "transform 0.2s" }} />
+                    </button>
+                    <AnimatePresence>
+                      {mobileIndustries && (
+                        <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.25 }}
+                          style={{ overflow: "hidden", paddingLeft: "12px" }}>
+                          {industries.map((ind) => (
+                            <Link key={ind.to} to={ind.to} style={{
+                              display: "block", padding: "10px 16px", borderRadius: "10px",
+                              fontSize: "13.5px", color: "#475569", textDecoration: "none",
+                              transition: "all 0.2s",
+                            }}
+                              onMouseEnter={(e) => { e.currentTarget.style.color = "#E8620A"; e.currentTarget.style.background = "#F4F7FA"; }}
+                              onMouseLeave={(e) => { e.currentTarget.style.color = "#475569"; e.currentTarget.style.background = "transparent"; }}
+                            >
+                              {ind.label}
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+
+                  {/* Products */}
+                  <Link to="/product" style={{
+                    display: "flex", alignItems: "center", justifyContent: "space-between",
+                    padding: "12px 16px", borderRadius: "12px", fontWeight: 500, fontSize: "14px",
+                    textDecoration: "none",
+                    background: isActive("/product") ? "#0B3D4E" : "transparent",
+                    color: isActive("/product") ? "#fff" : "#334155",
+                    transition: "all 0.2s",
+                  }}>
+                    Products
+                    <ArrowRight size={14} style={{ opacity: 0.4 }} />
+                  </Link>
+
+                  {/* Contact */}
+                  <Link to="/contact" style={{
+                    display: "flex", alignItems: "center", justifyContent: "space-between",
+                    padding: "12px 16px", borderRadius: "12px", fontWeight: 500, fontSize: "14px",
+                    textDecoration: "none",
+                    background: isActive("/contact") ? "#0B3D4E" : "transparent",
+                    color: isActive("/contact") ? "#fff" : "#334155",
+                    transition: "all 0.2s",
+                  }}>
+                    Contact
+                    <ArrowRight size={14} style={{ opacity: 0.4 }} />
+                  </Link>
+                </div>
+              </nav>
+
+              {/* Drawer footer CTA */}
+              <div style={{ padding: "20px", borderTop: "1px solid #E2E8F0", display: "flex", flexDirection: "column", gap: "12px" }}>
+                
+                <Link to="/contact" style={{
+                  display: "flex", alignItems: "center", justifyContent: "center", gap: "8px",
+                  background: "#E8620A", color: "#fff", padding: "14px",
+                  borderRadius: "12px", fontWeight: 600, fontSize: "14px", textDecoration: "none",
+                  boxShadow: "0 4px 16px rgba(232,98,10,0.3)",
+                  transition: "all 0.2s",
+                }}>
+                  Request a Quote
+                </Link>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 

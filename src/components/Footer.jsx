@@ -1,122 +1,277 @@
-import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin, Twitter} from "lucide-react";
-import logo from "../assets/react.svg";
+import React from "react";
+import { Link } from "react-router-dom";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  ArrowRight,
+} from "lucide-react";
+import { motion } from "framer-motion";
+
+const services = [
+  ["/service_repair", "Repair & Overhaul"],
+  ["/technical_training", "Technical Training"],
+  ["/units", "Reconditioned Units"],
+  ["/annual_contracts", "Annual Contracts"],
+];
+
+const industries = [
+  ["/mobile_hydraulics", "Mobile Hydraulics"],
+  ["/mining_power_generation", "Mining & Power"],
+  ["/defence_aviation", "Defence & Aviation"],
+  ["/marine_offshore", "Marine & Offshore"],
+  ["/agriculture_machines", "Agriculture"],
+];
+
+const quickLinks = [
+  ["/", "Home"],
+  ["/about", "About Us"],
+  ["/product", "Products"],
+  ["/contact", "Contact"],
+];
+
+const FooterCol = ({
+  title,
+  children,
+  delay = 0,
+}) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{
+      duration: 0.55,
+      delay,
+    }}
+  >
+    <h4 className="text-white font-semibold text-sm mb-6 pb-3 border-b border-white/10">
+      {title}
+    </h4>
+
+    {children}
+  </motion.div>
+);
 
 export default function Footer() {
   return (
+    <footer className="bg-[#071a24] text-white overflow-hidden">
 
-      <footer className="bg-gray-900 text-white py-8">
-      <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div>
-            <div className="flex items-center space-x-3 mb-6">
-              <img src={logo} alt="Company Logo" className="h-17 w-auto" />
-              <div>
-                <h3 className="text-xl font-bold">Rapid Engineering Services</h3>
-                <br/>
-                <p>Leading the industry with innovative solutions and quality manufacturing.</p>
-              </div>
-            </div>
-            <br/>
-            <br/>
-
-            {/* Social media links added here */}
-             <h1><b>FOLLOW US</b><br/>
-             {/* Follow Rapid Engineering Services for Expert Tips, Latest Updates, and Behind-the-Scenes Action in the World of Hydraulics!           */}
-             </h1><br/>
-             <div className="grid grid-cols-4 gap-2">
-                <a className="flex items-center justify-center gap-2 rounded-2xl border border-slate-200 p-3  hover:text-blue-400 transition-colors cursor-pointer" href="https://www.facebook.com/"><Facebook className="h-4 w-4"/></a>
-                <a className="flex items-center justify-center gap-2 rounded-2xl border border-slate-200 p-3 hover:text-blue-400 transition-colors cursor-pointer" href="https://www.instagram.com/"><Instagram className="h-4 w-4"/></a>
-                <a className="flex items-center justify-center gap-2 rounded-2xl border border-slate-200 p-3 hover:text-blue-400 transition-colors cursor-pointer" href="https://x.com/"><Twitter className="h-4 w-4"/></a>
-                <a className="flex items-center justify-center gap-2 rounded-2xl border border-slate-200 p-3 hover:text-blue-400 transition-colors cursor-pointer"  href="https://www.linkedin.com/"><Linkedin className="h-4 w-4"/></a>
-              </div>
-          </div>
+      {/* CTA */}
+      <div className="bg-[#0B3D4E] border-b border-white/10">
+        <div className="max-w-[1280px] mx-auto px-8 lg:px-10 py-10 lg:py-12 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
 
           <div>
-            <h4 className="text-lg font-semibold mb-4">Services</h4>
-            <ul className="space-y-2">
-              <li>
-                <a href="/service_repair" className="text-gray-400 hover:text-white transition-colors">
-                  Repair & Overhaul
-                </a>
-              </li>
-              <li>
-                <a href="/technical_training" className="text-gray-400 hover:text-white transition-colors">
-                  Technical Training
-                </a>
-              </li>
-              <li>
-                <a href="/units" className="text-gray-400 hover:text-white transition-colors">
-                  Reconditioned Units
-                </a>
-              </li>
-              <li>
-                <a href="/annual_contracts" className="text-gray-400 hover:text-white transition-colors">
-                  Annual Maintenance Contracts
-                </a>
-              </li>
-            </ul>
+            <h3
+              className="text-[26px] font-bold"
+              style={{
+                fontFamily:
+                  "'Syne', sans-serif",
+              }}
+            >
+              Ready to optimise your hydraulic systems?
+            </h3>
+
+            <p className="text-white/55 mt-2 text-sm">
+              Contact us today for a free consultation and quote.
+            </p>
           </div>
 
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2 text-gray-400">
-              <li>
-                <a href="/" className="hover:text-white transition-colors cursor-pointer">
-                Home Page
-                </a>
-              </li>
-              <li>
-                <a href="/about" className="hover:text-white transition-colors cursor-pointer">
-                About
-                </a>
-              </li>
-              {/* <li className="hover:text-white transition-colors cursor-pointer">
-                Our Team
-              </li> */}
-              <li>
-                <a href="/product" className="hover:text-white transition-colors cursor-pointer">
-                Our Products
-                </a>
-              </li>
-              {/* <li className="hover:text-white transition-colors cursor-pointer">
-                Our Partners
-              </li> */}
-              <li>
-                <a href="/contact" className="hover:text-white transition-colors cursor-pointer">
-                Contact Us
-                </a>
-              </li>
-            </ul>
-          </div>
+          <Link
+            to="/contact"
+            className="
+            flex items-center gap-2
+            bg-[#E8620A]
+            hover:bg-[#F47A2A]
+            px-8 py-4
+            rounded-xl
+            font-semibold
+            transition
+            hover:-translate-y-1
+            shadow-xl
+            "
+          >
+            Get a Free Quote
+            <ArrowRight size={16} />
+          </Link>
 
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
-            <div className="space-y-3 text-gray-400">
-              <div className="flex items-center hover:text-white transition-colors">
-                {/* <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-3"><path d="M22 16.92v3a2 2 0 0 1-2.18 2.02l-4.24-.85a2 2 0 0 1-1.82-1.52l-.8-.8c-1.31-1.3-2.62-2.61-3.92-3.91s-2.61-2.61-3.92-3.91l-.8-.8a2 2 0 0 1-1.52-1.82l-.85-4.24A2 2 0 0 1 3.08 2H6a2 2 0 0 1 2 2v3a2 2 0 0 1-1.15 1.83l-1.39.7a1 1 0 0 0-.46 1.13l.94 1.88a1 1 0 0 0 1.13.46l.7-1.39A2 2 0 0 1 12 11v3a2 2 0 0 1 1.83 1.15l.7 1.39a1 1 0 0 0 1.13.46l1.88-.94a1 1 0 0 0 1.13.46z"/></svg> */}
-                <Phone className="w-4 h-4 mr-3" />
-                <a href="tel:+919999999999">+91 9999999999</a>
-              </div>
-              <div className="flex items-center hover:text-white transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-3"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>
-                <a href="mailto:info@rapidengg.com">info@rapidengg.com</a>
-              </div>
-              <div className="flex items-start hover:text-white transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-3 mt-1"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-                <span>
-                  Delhi
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-          <p>
-            &copy; 2025 Rapid Engineering Services. All rights reserved.
-          </p>
         </div>
       </div>
+
+      {/* MAIN */}
+      <div
+  className="
+  max-w-[1280px]
+  mx-auto
+  px-8
+  lg:px-10
+  pt-24
+  pb-16
+"
+>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr_1.2fr] gap-12">
+
+          {/* Brand */}
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 20,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+          >
+            <div className="flex items-center gap-3 mb-6">
+
+              <div className="w-11 h-11 rounded-xl bg-[#E8620A] flex items-center justify-center">
+
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="white"
+                  strokeWidth="2.5"
+                >
+                  <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                  <path d="M2 17l10 5 10-5" />
+                  <path d="M2 12l10 5 10-5" />
+                </svg>
+
+              </div>
+
+              <div>
+                <div className="font-bold text-lg">
+                  Rapid Engineering
+                </div>
+
+                <div className="text-[11px] uppercase tracking-[0.25em] text-white/35">
+                  Industrial Solutions
+                </div>
+              </div>
+
+            </div>
+
+            <p className="text-white/50 leading-8 text-sm max-w-[280px]">
+              Leading hydraulic repair,
+              overhaul and industrial
+              services across India
+              since 2012.
+            </p>
+
+            
+          </motion.div>
+
+          {/* SERVICES */}
+          <FooterCol title="Services" delay={0.1}>
+            <ul className="space-y-4">
+              {services.map(([to, label]) => (
+                <li key={to}>
+                  <Link
+                    to={to}
+                    className="text-white/45 hover:text-orange-400 transition"
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </FooterCol>
+
+          {/* INDUSTRIES */}
+          <FooterCol title="Industries" delay={0.15}>
+            <ul className="space-y-4">
+              {industries.map(([to, label]) => (
+                <li key={to}>
+                  <Link
+                    to={to}
+                    className="text-white/45 hover:text-orange-400"
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </FooterCol>
+
+          {/* LINKS */}
+          <FooterCol title="Quick Links" delay={0.2}>
+            <ul className="space-y-4">
+              {quickLinks.map(([to, label]) => (
+                <li key={to}>
+                  <Link
+                    to={to}
+                    className="text-white/45 hover:text-orange-400"
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </FooterCol>
+
+          {/* CONTACT */}
+          <FooterCol title="Contact Us" delay={0.25}>
+
+            <div className="space-y-5">
+
+              <a
+                href="tel:+919999999999"
+                className="flex gap-3 text-white/50 hover:text-orange-400"
+              >
+                <Phone
+                  size={16}
+                  className="text-[#E8620A]"
+                />
+                +91 99999 99999
+              </a>
+
+              <a
+                href="mailto:info@rapidengg.com"
+                className="flex gap-3 text-white/50 hover:text-orange-400"
+              >
+                <Mail
+                  size={16}
+                  className="text-[#E8620A]"
+                />
+                info@rapidengg.com
+              </a>
+
+              <div className="flex gap-3 text-white/50">
+                <MapPin
+                  size={16}
+                  className="text-[#E8620A]"
+                />
+                Delhi, India
+              </div>
+
+            </div>
+
+          </FooterCol>
+
+        </div>
+
+      </div>
+
+      {/* Bottom */}
+      <div className="border-t border-white/10">
+  <div className="max-w-7xl mx-auto px-10 py-5 flex justify-center items-center">
+    <p className="text-white/30 text-xs text-center">
+      © 2026 Rapid Engineering Services. All rights reserved.
+    </p>
+  
+
+
+         
+
+        </div>
+
+      </div>
+
     </footer>
   );
-};
+}

@@ -1,68 +1,26 @@
-import React from 'react';
+import React from "react";
+import IndustryPageTemplate from "../IndustryPageTemplate";
 
-// Inline SVG for the checkmark icon
-const CheckIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    className="w-6 h-6 text-emerald-500 flex-shrink-0"
-  >
-    <path
-      fillRule="evenodd"
-      d="M19.916 4.626a.75.75 0 01.208 1.04l-9.5 13.5a.75.75 0 01-1.168.104l-5.5-5.5a.75.75 0 011.06-1.06l4.97 4.97L19.708 5.66a.75.75 0 011.04-.208z"
-      clipRule="evenodd"
-    />
-  </svg>
+const Agriculture = () => (
+  <IndustryPageTemplate
+    badge="Agriculture Machinery Solutions"
+    title="Agricultural Hydraulics"
+    subtitle="Engineered fluid power solutions designed to withstand extreme contamination and demanding seasonal harvest workloads."
+    bgImage="https://img.freepik.com/free-photo/close-up-seeder-attached-tractor-field_146671-19087.jpg"
+    aboutTitle="High-Efficiency Hydraulics for Precision Farming"
+    aboutText={[
+      "Agricultural hydraulics operate in punishing, high-dust, and high-moisture environments. Systems demand flawless sealing integrity, precise flow control, and durable mechanical tolerances to prevent fluid degradation and pressure loss.",
+      "At Rapid Engineering, we provide factory-level rebuilding, diagnostic calibration, and component supply for major agricultural brands. We focus on enhancing pump pressure and proportional valve response to ensure your machinery performs at maximum efficiency when the harvest window opens."
+    ]}
+    aboutImage="https://img.freepik.com/free-photo/tractor-working-field_342744-535.jpg"
+    features={["Proportional Valve Tuning", "High-Durability Sealing", "Steering Control Calibration", "PTO Drive Rebuilding", "Implement Lift Cylinder Service", "Fluid Contamination Control"]}
+    highlights={[
+      { title: "Seasonal Readiness Audits", desc: "Comprehensive pre-harvest pressure testing and oil analysis to eliminate mid-season breakdowns." },
+      { title: "Field Diagnostics & Repair", desc: "Rapid deployment of on-site service vehicles to remote farms for instant troubleshooting." },
+      { title: "OEM Component Integrity", desc: "All pump and motor rebuilds utilize original components from Danfoss, Rexroth, and Eaton." }
+    ]}
+    equipmentList={["Combine Harvesters", "Heavy-Duty Tractors", "Sugarcane Harvesters", "Large Balers", "Self-Propelled Sprayers", "Precision Planters", "Irrigation Power Units"]}
+  />
 );
-
-// Main App component to contain the page content
-export const Agriculture = () => {
-  return (
-    <div className="bg-gray-50 font-sans text-gray-800">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-900/80 to-blue-700/80 text-white py-12 px-6 sm:px-12 md:px-24 bg-cover bg-center relative"
-      style={{ backgroundImage: 'url(https://img.freepik.com/free-photo/close-up-seeder-attached-tractor-field_146671-19087.jpg?ga=GA1.1.1154289487.1757069524&semt=ais_hybrid&w=740&q=80)' }}
-      >
-        <div className="absolute inset-0 bg-green-900 opacity-60"></div>
-                <div className="max-w-7xl mx-auto text-center py-16 sm:py-24 relative z-10">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4">
-            Agriculture Machines
-          </h1>
-          <p className="text-lg sm:text-xl font-light max-w-3xl mx-auto opacity-90">
-            Advanced hydraulic solutions to improve performance and efficiency of agricultural machinery.
-          </p>
-        </div>
-      </section>
-
-      <main>
-        {/* About Section - Agriculture Machines */}
-        <section className="py-16 sm:py-24 px-6 md:px-24">
-          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
-            <div className="w-full md:w-1/2">
-              {/* Placeholder image for the section's visual */}
-              <img
-                src="https://img.freepik.com/free-photo/tractor-working-field_342744-535.jpg?ga=GA1.1.1154289487.1757069524&semt=ais_hybrid&w=740&q=80"
-                alt="Agricultural machinery with hydraulic systems"
-                className="w-full h-auto rounded-xl shadow-2xl"
-              />
-            </div>
-            <div className="w-full md:w-1/2 text-center md:text-left">
-              <h2 className="text-3xl sm:text-4xl font-bold text-emerald-900 mb-6">
-                Agriculture Machines
-              </h2>
-              <p className="text-lg text-gray-600 leading-relaxed mb-4">
-                Hydraulics for agricultural machinery need to be powerful and precise to handle a wide range of tasks, from planting and harvesting to spraying and baling.
-              </p>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                We have over 40 years of experience designing and manufacturing custom hydraulic solutions for these critical sectors. Our products are engineered for maximum uptime and safety.
-              </p>
-            </div>
-          </div>
-        </section>
-      </main>
-    </div>
-  );
-};
 
 export default Agriculture;

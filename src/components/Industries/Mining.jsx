@@ -1,71 +1,26 @@
-import React from 'react';
+import React from "react";
+import IndustryPageTemplate from "../IndustryPageTemplate";
 
-// Inline SVG for the checkmark icon
-const CheckIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    className="w-6 h-6 text-emerald-500 flex-shrink-0"
-  >
-    <path
-      fillRule="evenodd"
-      d="M19.916 4.626a.75.75 0 01.208 1.04l-9.5 13.5a.75.75 0 01-1.168.104l-5.5-5.5a.75.75 0 011.06-1.06l4.97 4.97L19.708 5.66a.75.75 0 011.04-.208z"
-      clipRule="evenodd"
-    />
-  </svg>
+const Mining = () => (
+  <IndustryPageTemplate
+    badge="Extreme-Pressure Mining Operations"
+    title="Mining & Power Generation"
+    subtitle="Rugged hydraulic engineering built to endure high vibration, abrasive coal/ore dust, and non-stop work cycles."
+    bgImage="https://img.freepik.com/free-photo/wide-angle-shot-excavation-machines-lookout-jackerath-garzweiler-skywalk-germany_181624-10184.jpg"
+    aboutTitle="Rugged Fluid Power for Excavation & Power Plants"
+    aboutText={[
+      "Mining and power generation hydraulics operate under the most punishing conditions: abrasive coal dust, severe vibration, massive loads, and 24/7 operating schedules. Component failure in remote mines can halt entire operations, costing thousands of dollars per hour in lost productivity.",
+      "Rapid Engineering Services has a proven track record of supporting mining and power operations across India. We rebuild heavy excavator main pumps, travel motors, steam turbine actuators, and coal handling cylinder rams—testing all components under full dynamic load to guarantee reliability."
+    ]}
+    aboutImage="https://img.freepik.com/free-photo/heavy-excavator-working-at-open-cast-coal-mine_146671-19077.jpg"
+    features={["Heavy Excavator Pump Service", "Hydrostactic Motor Rebuilding", "Turbine Actuator Calibration", "Abrasive-Resistant Seals", "Dynamic Dyno Validation", "Accumulator Gas Safety Audits"]}
+    highlights={[
+      { title: "Computerized Dyno Validation", desc: "Every mining pump is run on our computerized dyno bench at full pressure (450 Bar) to verify volumetric efficiency." },
+      { title: "Particulate Ingress Defense", desc: "Installing heavy-duty wiper rings and metallic scraper seals to prevent coal/ore dust from damaging cylinder bores." },
+      { title: "Obsolete Parts Salvaging", desc: "Expert re-machining and alloy rebuilding of obsolete hydraulic valve blocks for older mining excavator fleets." }
+    ]}
+    equipmentList={["Hydraulic Mining Shovels", "Bucket Wheel Excavators", "Underground LHD Loaders", "Coal Pulverizer Cylinders", "Steam Turbine Governor Valves", "Heavy Dump Truck Hoists", "Rock Drills"]}
+  />
 );
-
-// Main App component to contain the entire page structure
-export const Mining = () => {
-  return (
-    <div className="bg-gray-50 font-sans text-gray-800">
-        <header
-        className="bg-gradient-to-r from-blue-900/80 to-blue-700/80 text-white py-12 px-6 sm:px-12 md:px-24 bg-cover bg-center relative"
-        // style={{ backgroundImage: 'url(https://www.beckersmcusa.com/sites/default/files/inline-images/mining%20underground.jpg)' }}
-        style={{backgroundImage:'url(https://img.freepik.com/free-photo/aerial-shot-two-power-plant-sunset-vilnius_181624-15104.jpg?ga=GA1.1.1154289487.1757069524&semt=ais_hybrid&w=740&q=80)'}}
-      >
-        <div className="absolute inset-0 bg-gray-900 opacity-80"></div>
-        <div className="max-w-7xl mx-auto text-center py-16 sm:py-24 relative z-10">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4">
-            Mining & Power Generation
-          </h1>
-          <p className="text-lg sm:text-xl font-light max-w-3xl mx-auto opacity-90">
-            Advanced hydraulic systems and cylinders for the demanding environments of the mining & power generation industry.
-          </p>
-        </div>
-      </header>
-
-      {/* Main Content Section */}
-      <main>
-        {/* About Section - Mining & Power Generation */}
-        <section className="py-16 sm:py-24 px-6 md:px-24">
-          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
-            <div className="w-full md:w-1/2">
-              {/* Placeholder image for the section's visual */}
-              <img
-                  src="https://img.freepik.com/free-photo/wide-angle-shot-excavation-machines-lookout-jackerath-garzweiler-skywalk-germany_181624-10184.jpg?ga=GA1.1.1154289487.1757069524&semt=ais_hybrid&w=740&q=80"
-                // src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRC5nkxAeytJgC6-ZQCNVjh1nHYgWH8ZIRKAQ&s"
-                alt="Mining and Power Generation equipment"
-                className="w-full h-auto rounded-xl shadow-2xl"
-              />
-            </div>
-            <div className="w-full md:w-1/2 text-center md:text-left">
-              <h2 className="text-3xl sm:text-4xl font-bold text-blue-900 mb-6">
-                Mining & Power Generation
-              </h2>
-              <p className="text-lg text-gray-600 leading-relaxed mb-4">
-                Hydraulics for mining and power generation machinery needs to be robust and reliable to withstand the harsh environments and continuous operation required.
-              </p>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                We have over 40 years of experience designing and manufacturing custom hydraulic solutions for these critical sectors. Our products are engineered for maximum uptime and safety.
-              </p>
-            </div>
-          </div>
-        </section>
-      </main>
-    </div>
-  );
-};
 
 export default Mining;
