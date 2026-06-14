@@ -1,4 +1,5 @@
 import React from "react";
+import heroImg from "../../assets/707d006f742e5190edab406c73c96e9a.jpg";
 import IndustryPageTemplate from "../IndustryPageTemplate";
 
 const Recycling = () => (
@@ -6,7 +7,7 @@ const Recycling = () => (
     badge="High-Tonnage Scrap & Waste Processing"
     title="Recycling Hydraulics"
     subtitle="Heavy-duty high-pressure cylinder rebuilds and logic manifold servicing for scrap balers, shearers, and compactors."
-    bgImage="https://img.freepik.com/free-photo/crane-grab-scrap_1112-1220.jpg"
+    bgImage={heroImg}
     aboutTitle="Endurance Engineering for Waste Compaction & Shearing"
     aboutText={[
       "Recycling and waste management equipment operates under continuous, high-pressure cycles in incredibly dirty environments. Scrap metal balers, vehicle crushers, and heavy shearers require massive tonnage, robust cylinder seals, and high-flow manifold logic to compress materials without structural failure.",

@@ -1,4 +1,5 @@
 import React from "react";
+import heroImg from "../../assets/0eff55f00e8a637b45056815e4b2e289.jpg";
 import IndustryPageTemplate from "../IndustryPageTemplate";
 
 const Manufacturing = () => (
@@ -6,7 +7,7 @@ const Manufacturing = () => (
     badge="Factory Automation & Production Systems"
     title="Manufacturing Hydraulics"
     subtitle="Precision proportional controls and high-cycle power packs keeping production lines running with zero unscheduled downtime."
-    bgImage="https://img.freepik.com/free-photo/machines-industrial-building_140725-7605.jpg"
+    bgImage={heroImg}
     aboutTitle="High-Cycle Precision for Modern Production Lines"
     aboutText={[
       "In industrial manufacturing, cycle time and pressure consistency are key. High-capacity forging presses, injection molding machines, and stamping lines require rapid, repeatable movement and sub-millisecond proportional valve response. A drop in system pressure or a valve failure can halt an entire factory.",
