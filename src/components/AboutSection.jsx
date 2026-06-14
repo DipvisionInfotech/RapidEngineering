@@ -15,11 +15,7 @@ const capabilities = [
   "Genuine OEM Parts Supply",
 ];
 
-const highlights = [
-  { num: "13+", label: "Years Experience" },
-  { num: "500+", label: "Repairs Completed" },
-  { num: "9+", label: "Industries Served" },
-];
+
 
 const AboutSection = () => (
   <section className="py-20 md:py-28 bg-white overflow-hidden">
@@ -84,20 +80,14 @@ const AboutSection = () => (
           </div>
 
           <div className="flex items-center gap-5 flex-wrap">
+            
             <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 bg-[#E8620A] hover:bg-[#F47A2A] text-white
+              to="/about"
+               className="inline-flex items-center gap-2 bg-[#E8620A] hover:bg-[#F47A2A] text-white
                          px-7 py-3.5 rounded-xl font-semibold text-[14.5px]
                          transition-all hover:-translate-y-0.5 shadow-md shadow-orange-200"
             >
-              <Phone size={16} /> Get in Touch
-            </Link>
-            <Link
-              to="/about"
-              className="inline-flex items-center gap-1.5 text-[#0B3D4E] font-semibold text-sm
-                         hover:text-[#E8620A] transition-colors group"
-            >
-              Learn Our Story
+               Our Story
               <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
@@ -120,25 +110,7 @@ const AboutSection = () => (
             <div className="absolute inset-0 bg-gradient-to-t from-[#0B3D4E]/55 via-transparent to-transparent" />
           </div>
 
-          {/* Stats at bottom of image */}
-          <div className="absolute bottom-0 left-0 right-0 p-5">
-            <div className="grid grid-cols-3 gap-3">
-              {highlights.map((h) => (
-                <div
-                  key={h.label}
-                  className="glass-card rounded-xl p-3 text-center"
-                >
-                  <p
-                    className="text-white font-black text-xl leading-none"
-                    style={{ fontFamily: "'Syne',sans-serif" }}
-                  >
-                    {h.num}
-                  </p>
-                  <p className="text-white/60 text-[10px] mt-1 leading-tight">{h.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+         
 
           {/* Floating ISO badge */}
           

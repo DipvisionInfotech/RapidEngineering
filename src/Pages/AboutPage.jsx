@@ -2,8 +2,10 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { CheckCircle2, Phone, Award, Users, Factory, Globe } from "lucide-react";
-import PageHero from "../components/Pagehero";
-import aboutImg from "../assets/about.jpg";
+import PageHero from "../components/PageHero";
+import aboutImg from "../assets/bafeb25e45d23025efdf555d67341348.jpg";
+
+
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -24,12 +26,13 @@ const whyItems = [
 const AboutPage = () => (
   <div className="bg-white">
     <PageHero
+    
+  title="About Rapid Engineering"
+  subtitle="A team of passionate hydraulic engineers dedicated to keeping industrial India's machinery running at peak performance."
+  bgImage={aboutImg}
+/>
       
-      title="About Rapid Engineering"
-      subtitle="A team of passionate hydraulic engineers dedicated to keeping industrial India's machinery running at peak performance."
-      bgImage={aboutImg}
-      
-    />
+    
 
     {/* Main about */}
     <section className="py-20 max-w-7xl mx-auto px-6">
@@ -89,8 +92,8 @@ const AboutPage = () => (
         </motion.div>
         <div className="grid md:grid-cols-2 gap-6">
           {[
-            { title: "Our Mission", text: "To be the leading provider of hydraulic solutions by offering unparalleled service, innovative products, and expert technical support, ensuring our clients' systems operate at peak performance." },
-            { title: "Our Vision",  text: "To drive industry standards by continuously improving our technical capabilities and expanding our service offerings, while maintaining our core values of integrity, quality, and a customer-first approach." },
+            { title: "Our Mission", text: "To be the leading provider of hydraulic solutions by offering unparalleled service, innovative products, and expert technical support to our clients, ensuring their systems operate at peak performance." },
+            { title: "Our Vision",  text: "To drive industry standards by continuously improving our technical capabilities and expanding our service offerings, while maintaining our core values of integrity, quality, and customer-first approach." },
           ].map((item, i) => (
             <motion.div key={item.title} {...fadeUp(i*0.1)}
               className="bg-white rounded-2xl p-8 border border-slate-200 hover:shadow-lg transition-shadow">

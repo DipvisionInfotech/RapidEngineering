@@ -94,20 +94,9 @@ const ContactSection = () => {
               </div>
             </div>
 
-            {/* Quick response promise */}
-            <div className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-9 h-9 rounded-xl bg-green-50 flex items-center justify-center">
-                  <span className="text-green-500 text-lg">✓</span>
-                </div>
-                <p className="font-bold text-[#0B3D4E] text-sm">Quick Response Guaranteed</p>
-              </div>
-              <p className="text-slate-500 text-xs leading-relaxed">
-                We respond to every enquiry within <span className="font-semibold text-[#0B3D4E]">24 business hours</span>.
-                Emergency repairs: call us directly for immediate assistance.
-              </p>
-            </div>
+             
           </motion.div>
+         
 
           {/* Right – Form */}
           <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }}

@@ -2,53 +2,79 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import img1 from "../assets/a0f714b2a38a814eb885ee7f1b68912f.jpg";
+import img2 from "../assets/250cb8d5e651f2c520e6d268aced0171.jpg";
+import img3 from "../assets/3551dd69473ff383b4a5ec677d59033c.jpg";
+import img4 from "../assets/85b3f02c3dea37912ab3a14881574a23.jpg";
+import img5 from "../assets/b1b44ca4d490c9cf45754a5b091cd66f.jpg";
+import img6 from "../assets/31dfdcf95d427d4970ba29f42a10a30e.jpg";
+import img7 from "../assets/5cd5aca483e764da1e686c74ed22791c.jpg";
+import img8 from "../assets/707d006f742e5190edab406c73c96e9a.jpg";
+import img9 from "../assets/b911760e50e42accaa5c1f76680fe8b5.jpg";
 
 const industries = [
-  {
-    icon: "🚜", label: "Agriculture",         link: "/agriculture_machines",
-    desc: "Tractors, harvesters, sprayers & precision farming machinery.",
-    img: "https://img.freepik.com/free-photo/tractor-working-field_342744-535.jpg",
-  },
-  {
-    icon: "🛡️", label: "Defence & Aviation",  link: "/defence_aviation",
-    desc: "Mission-critical hydraulics for military & aerospace systems.",
-    img: "https://img.freepik.com/free-photo/yellow-jets-maneuvering-sky-air-parade_181624-16775.jpg",
-  },
-  {
-    icon: "🌲", label: "Forestry",            link: "/forestry",
-    desc: "Feller bunchers, harvesters, forwarders & log handling equipment.",
-    img: "https://img.freepik.com/free-photo/low-angle-shot-piled-logs-with-greenery-background_181624-17565.jpg",
-  },
-  {
-    icon: "⚙️", label: "Manufacturing",       link: "/manufacturing",
-    desc: "Presses, robotic arms, CNC machinery & assembly line systems.",
-    img: "https://img.freepik.com/free-photo/machines-industrial-building_140725-7605.jpg",
-  },
-  {
-    icon: "⚓", label: "Marine & Offshore",   link: "/marine_offshore",
-    desc: "Ships, cranes, winches, deck machinery & offshore platforms.",
-    img: "https://img.freepik.com/free-photo/cargo-ship-parked-harbor-sunny-day-sunset_181624-4056.jpg",
-  },
-  {
-    icon: "⛏️", label: "Mining & Power",      link: "/mining_power_generation",
-    desc: "Excavators, rock drills, haul trucks & power plant equipment.",
-    img: "https://img.freepik.com/free-photo/wide-angle-shot-excavation-machines-lookout-jackerath-garzweiler-skywalk-germany_181624-10184.jpg",
-  },
-  {
-    icon: "🚛", label: "Mobile Hydraulics",   link: "/mobile_hydraulics",
-    desc: "Wheel loaders, crane trucks, tippers, telehandlers & more.",
-    img: "https://img.freepik.com/free-photo/modern-automated-assembly-line-cars-latest-technological-neutral-technologies-production-cars-plant-assembly-shop-modern-cars_645730-531.jpg",
-  },
-  {
-    icon: "♻️", label: "Recycling",           link: "/recycling",
-    desc: "Balers, shredders, compactors & scrap handling machinery.",
-    img: "https://img.freepik.com/free-photo/crane-grab-scrap_1112-1220.jpg",
-  },
-  {
-    icon: "🚇", label: "Tunnel Boring",       link: "/tunnel",
-    desc: "High-pressure TBM hydraulics for metro & infrastructure projects.",
-    img: "https://img.freepik.com/free-photo/underground-tunnel-istanbul-turkey_1268-22513.jpg",
-  },
+{
+label:"Agriculture",
+link:"/agriculture_machines",
+desc:"Tractors, harvesters, sprayers & precision farming machinery.",
+iconImg:img1,
+},
+
+{
+label:"Defence & Aviation",
+link:"/defence_aviation",
+desc:"Mission-critical hydraulics for military & aerospace systems.",
+iconImg:img2,
+},
+
+{
+label:"Forestry",
+link:"/forestry",
+desc:"Feller bunchers, harvesters, forwarders & log handling equipment.",
+iconImg:img3,
+},
+
+{
+label:"Manufacturing",
+link:"/manufacturing",
+desc:"Presses, robotic arms, CNC machinery & assembly line systems.",
+iconImg:img4,
+},
+
+{
+label:"Marine & Offshore",
+link:"/marine_offshore",
+desc:"Ships, cranes, winches & offshore platforms.",
+iconImg:img5,
+},
+
+{
+label:"Mining & Power",
+link:"/mining_power_generation",
+desc:"Excavators, haul trucks & power equipment.",
+iconImg:img6,
+},
+
+{
+label:"Mobile Hydraulics",
+link:"/mobile_hydraulics",
+desc:"Wheel loaders, crane trucks & telehandlers.",
+iconImg:img7,
+},
+
+{
+label:"Recycling",
+link:"/recycling",
+desc:"Balers, shredders & compactors.",
+iconImg:img8,
+},
+
+{
+label:"Tunnel Boring",
+link:"/tunnel",
+desc:"High-pressure TBM hydraulic systems.",
+iconImg:img9,
+},
 ];
 
 const IndustriesSection = () => (
@@ -90,9 +116,13 @@ const IndustriesSection = () => (
               </div>
 
               {/* Icon */}
-              <div className="w-12 h-12 rounded-xl bg-[#0B3D4E]/8 group-hover:bg-[#0B3D4E] flex items-center justify-center flex-shrink-0 transition-colors duration-300 text-xl relative z-10">
-                <span>{ind.icon}</span>
-              </div>
+              <div className="w-14 h-14 rounded-xl overflow-hidden flex-shrink-0">
+  <img
+    src={ind.iconImg}
+    alt={ind.label}
+    className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+  />
+</div>
 
               {/* Text */}
               <div className="relative z-10 flex-1 min-w-0">
