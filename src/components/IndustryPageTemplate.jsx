@@ -19,7 +19,6 @@ const IndustryPageTemplate = ({
   <div className="bg-white">
     <PageHero
       badge={badge} title={title} subtitle={subtitle} bgImage={bgImage}
-      breadcrumbs={[{ label: "Home", to: "/" }, { label: "Industries", to: "/" }, { label: title }]}
     />
 
     {/* About */}
