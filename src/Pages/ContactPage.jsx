@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, Phone, Mail, Clock, Facebook, Instagram, Twitter, Linkedin, Send, MessageSquare } from "lucide-react";
+import heroImg from "../assets/6d6b4db7481433ed1dce1a322ed066bb.jpg";
 import PageHero from "../components/PageHero";
 
 // Floating Input Component
@@ -154,10 +155,10 @@ const ContactPage = () => {
   return (
     <div className="bg-white">
       <PageHero
-        title="Contact Us"
-        subtitle="Reach out for repair quotes, technical queries, training enquiries, or partnership opportunities."
-        bgImage="https://img.freepik.com/free-photo/close-up-image-nut-key-mechanic-s-arm_613910-13714.jpg"
-      />
+  title="Contact Us"
+  subtitle="Reach out for repair quotes, technical queries, training enquiries, or partnership opportunities."
+  bgImage={heroImg}
+/>
 
       <section className="py-20 bg-[#F4F7FA]">
         <div className="max-w-7xl mx-auto px-6">

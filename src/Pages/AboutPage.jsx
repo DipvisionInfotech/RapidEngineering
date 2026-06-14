@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Phone, CheckCircle2 } from "lucide-react";
 import PageHero from "../components/PageHero";
-import aboutHero from "../assets/LXm3SMYl21LN0OOGJyAn4lwFg_c2HIgf8REEPxUuGnmZbzvY14pZg9tlH1YUePdqoJDs7o9T1Ju8AGey5fLgw7wIls58Gf8Km-DO-Q9FbTmEcshPBvzHWrVMPZBCz7AXF14SCQDEW02EAhlEiy9TZp0i1CL08POUN_Ffs4aT5FL2yd5swIuuPlbv1Xx6bVEi.jpg";
+import aboutHero from "../assets/bafeb25e45d23025efdf555d67341348.jpg";
 
 // Local image imports for Why Choose Us
 import customizedImg from "../assets/41f5c68e06005373c8922f47aad22edc.jpg";
@@ -110,10 +110,7 @@ const AboutPage = () => (
             Our goal is simple — minimise your downtime and maximise your productivity. With ISO certification, OEM authorisation,
             and a team of 50+ engineers, we deliver factory-quality results at competitive costs, nationwide.
           </p>
-          <Link to="/contact"
-            className="inline-flex items-center gap-2 bg-[#E8620A] hover:bg-[#F47A2A] text-white px-7 py-3.5 rounded-xl font-semibold text-[14.5px] transition-all hover:-translate-y-0.5 shadow-lg shadow-orange-200">
-            <Phone size={16} /> Get in Touch
-          </Link>
+          
         </motion.div>
 
         <motion.div {...fadeRight(0.1)}>

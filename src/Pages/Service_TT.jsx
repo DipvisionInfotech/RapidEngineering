@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { BookOpen, Users, Wrench, Award, CheckCircle, Phone, IndianRupee, ChevronLeft, ChevronRight } from "lucide-react";
 import PageHero from "../components/PageHero";
+import trainingHeroImg from "../assets/0df0f80b5d38beb5dd1a172517b86c92.jpg";
+
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -73,7 +75,7 @@ const Service_TT = () => {
         badge="Advanced Industrial Fluid Power Training"
         title="Technical Training & Mentorship"
         subtitle="Bridging the gap between academic theory and complex field operations. Practical hands-on training on live test stands for engineers, technicians, and plant operators."
-        bgImage="https://img.freepik.com/free-vector/business-team-with-laptops-look-digital-presentation_335657-579.jpg"
+        bgImage={trainingHeroImg}
       />
 
       {/* Why Train with Us */}

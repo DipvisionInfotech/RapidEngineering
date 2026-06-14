@@ -6,7 +6,6 @@ import { ArrowRight, Phone, ChevronRight } from "lucide-react";
 
 import hero1 from "../assets/zYPLrkH3-0pbdigELCOdqOiumpY3lazHVUP6OWMk-Gi0taJUvCpEmviwIUV-80KKRleDwM5AL4uHMjwG_yE2Hv3g0uNg3BEnKJa-tOn_ywJthTn6pupUv4ecrJVgutl522_gEUhc-_VTpEwF1gzplnLeRzTcv685zhlVzOHNySJZI7QQMQn91A8X5p11cUYP.jpg";
 import hero2 from "../assets/FMxb3NbLh7WfavQu9eWPZlZ-uUfzp_3oQ-4agrxx26dq_HSwW5EDhUFdZbCwsJzMQZ9LEumwzcQQ5mkzPfuv3VD6CDVoG0VxEa2PJoFCkJL-EYphmbWcoeljBGKqXRs8lkKiQGKclw-M2PflOFpRWxyKMd-MRjutM2jN8YUugOGNQtw5oMpL3Kgr-W4NT5G4.jpg";
-import hero3 from "../assets/635dc1a2773b7a0b2bbbc5a993b06a59.jpg";
 import hero4 from "../assets/LXm3SMYl21LN0OOGJyAn4lwFg_c2HIgf8REEPxUuGnmZbzvY14pZg9tlH1YUePdqoJDs7o9T1Ju8AGey5fLgw7wIls58Gf8Km-DO-Q9FbTmEcshPBvzHWrVMPZBCz7AXF14SCQDEW02EAhlEiy9TZp0i1CL08POUN_Ffs4aT5FL2yd5swIuuPlbv1Xx6bVEi.jpg";
 import hero5 from "../assets/250cb8d5e651f2c520e6d268aced0171.jpg";
 
@@ -14,7 +13,6 @@ import hero5 from "../assets/250cb8d5e651f2c520e6d268aced0171.jpg";
 const slides = [
   { url: hero1, tag: "Hydraulic Systems" },
   { url: hero2, tag: "Industrial Engineering" },
-  { url: hero3, tag: "Precision Manufacturing" },
   { url: hero4, tag: "Expert Technicians" },
   { url: hero5, tag: "Aerospace & Defence" },
 ];

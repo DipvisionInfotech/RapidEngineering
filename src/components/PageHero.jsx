@@ -8,7 +8,7 @@ import { ChevronRight } from "lucide-react";
  * Props: badge, title, subtitle, bgImage, breadcrumbs [{label, to?}]
  */
 const PageHero = ({ badge, title, subtitle, bgImage, breadcrumbs = [] }) => (
-  <section className="relative text-white overflow-hidden pt-0" style={{ minHeight: "380px" }}>
+  <section className="relative text-white overflow-hidden pt-0 animate-fade-in" style={{ minHeight: "450px" }}>
     {/* BG Image — shows true colours */}
     {bgImage && (
       <img
@@ -39,7 +39,7 @@ const PageHero = ({ badge, title, subtitle, bgImage, breadcrumbs = [] }) => (
     <div className="absolute right-0 top-0 w-72 h-72 bg-orange-500/10 rounded-full blur-3xl pointer-events-none" />
 
     {/* Content */}
-    <div className="relative max-w-7xl mx-auto px-6 pt-[120px] pb-18 md:pt-[140px] md:pb-22">
+    <div className="relative max-w-7xl mx-auto px-6 pt-[140px] pb-24 md:pt-[175px] md:pb-32">
       {/* Breadcrumb */}
       {breadcrumbs.length > 0 && (
         <nav className="flex items-center gap-1.5 text-white/45 text-xs mb-5">

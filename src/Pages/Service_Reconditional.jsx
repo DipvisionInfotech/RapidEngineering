@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { CheckCircle, Phone, Leaf, TrendingDown, Clock, ShieldCheck } from "lucide-react";
 import PageHero from "../components/PageHero";
+import recondHeroImg from "../assets/6442a85b2042a67c49e57c3a7874f4ca.jpg";
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -41,7 +42,7 @@ const Service_Reconditional = () => {
         badge="Zero-Tolerance Certified Reconditioning"
         title="Premium Reconditioned Units"
         subtitle="Access high-performance hydraulic pumps, motors, and control valves calibrated to original factory specs at up to 60% savings."
-        bgImage="https://img.freepik.com/free-photo/combine-machine-service-mechanic-repairing-motor-outdoors_146671-19074.jpg"
+        bgImage={recondHeroImg}
       />
 
       {/* About section */}
