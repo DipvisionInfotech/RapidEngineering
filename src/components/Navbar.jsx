@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ChevronDown, Menu, X, Phone, ArrowRight } from "lucide-react";
+import { ChevronDown, Phone, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const industries = [
@@ -21,9 +21,6 @@ const services = [
   { to: "/units",              label: "Reconditioned Units",              desc: "Cost-effective quality units" },
   { to: "/annual_contracts",   label: "Annual Maintenance Contracts",     desc: "Scheduled preventive care" },
 ];
-
-/* ── Mega dropdown for Services ── */
-/* ── Clean Minimal Dropdowns ── */
 
 const ServicesDropdown = () => (
   <div
@@ -56,7 +53,6 @@ const ServicesDropdown = () => (
     </h3>
 
     <div className="space-y-3">
-
       {services.map((item) => (
         <Link
           key={item.to}
@@ -87,15 +83,12 @@ const ServicesDropdown = () => (
               transition
             "
           />
-
           <span>{item.label}</span>
         </Link>
       ))}
-
     </div>
   </div>
 );
-
 
 const IndustriesDropdown = () => (
   <div
@@ -128,7 +121,6 @@ const IndustriesDropdown = () => (
     </h3>
 
     <div className="space-y-3">
-
       {industries.map((item) => (
         <Link
           key={item.to}
@@ -159,11 +151,9 @@ const IndustriesDropdown = () => (
               transition
             "
           />
-
           <span>{item.label}</span>
         </Link>
       ))}
-
     </div>
   </div>
 );
@@ -179,11 +169,20 @@ const Navbar = () => {
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", fn, { passive: true });
-    fn(); // run once on mount
+    fn();
     return () => window.removeEventListener("scroll", fn);
   }, []);
 
   useEffect(() => { setMobileOpen(false); }, [location]);
+
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
 
   const isActive = (path) => location.pathname === path;
 
@@ -211,7 +210,6 @@ const Navbar = () => {
 
             {/* Logo */}
             <Link to="/" style={{ display: "flex", alignItems: "center", gap: "12px", flexShrink: 0, textDecoration: "none" }}>
-              
               <div style={{ lineHeight: 1 }}>
                 <p style={{ color: "#fff", fontWeight: 700, fontSize: "17px", letterSpacing: "-0.3px", fontFamily: "'Syne',sans-serif" }}>
                   Rapid Engineering
@@ -223,21 +221,16 @@ const Navbar = () => {
             </Link>
 
             {/* Desktop links */}
-            <ul style={{ display: "flex", alignItems: "center", gap: "4px", flex: 1, justifyContent: "center", listStyle: "none", padding: 0, margin: 0 }}
-              className="hidden lg:flex">
-              
-              {/* Home */}
+            <ul
+              style={{ display: "flex", alignItems: "center", gap: "4px", flex: 1, justifyContent: "center", listStyle: "none", padding: 0, margin: 0 }}
+              className="hidden lg:flex"
+            >
               <li>
                 <Link to="/" style={{
-                  padding: "8px 14px",
-                  borderRadius: "10px",
-                  fontSize: "13.5px",
-                  fontWeight: 500,
+                  padding: "8px 14px", borderRadius: "10px", fontSize: "13.5px", fontWeight: 500,
                   color: isActive("/") ? "#F47A2A" : "rgba(255,255,255,0.82)",
                   background: isActive("/") ? "rgba(255,255,255,0.08)" : "transparent",
-                  textDecoration: "none",
-                  transition: "all 0.2s ease",
-                  display: "block",
+                  textDecoration: "none", transition: "all 0.2s ease", display: "block",
                 }}
                   onMouseEnter={(e) => { if (!isActive("/")) { e.target.style.color = "#fff"; e.target.style.background = "rgba(255,255,255,0.08)"; } }}
                   onMouseLeave={(e) => { if (!isActive("/")) { e.target.style.color = "rgba(255,255,255,0.82)"; e.target.style.background = "transparent"; } }}
@@ -246,18 +239,12 @@ const Navbar = () => {
                 </Link>
               </li>
 
-              {/* About */}
               <li>
                 <Link to="/about" style={{
-                  padding: "8px 14px",
-                  borderRadius: "10px",
-                  fontSize: "13.5px",
-                  fontWeight: 500,
+                  padding: "8px 14px", borderRadius: "10px", fontSize: "13.5px", fontWeight: 500,
                   color: isActive("/about") ? "#F47A2A" : "rgba(255,255,255,0.82)",
                   background: isActive("/about") ? "rgba(255,255,255,0.08)" : "transparent",
-                  textDecoration: "none",
-                  transition: "all 0.2s ease",
-                  display: "block",
+                  textDecoration: "none", transition: "all 0.2s ease", display: "block",
                 }}
                   onMouseEnter={(e) => { if (!isActive("/about")) { e.target.style.color = "#fff"; e.target.style.background = "rgba(255,255,255,0.08)"; } }}
                   onMouseLeave={(e) => { if (!isActive("/about")) { e.target.style.color = "rgba(255,255,255,0.82)"; e.target.style.background = "transparent"; } }}
@@ -266,7 +253,6 @@ const Navbar = () => {
                 </Link>
               </li>
 
-              {/* Services dropdown */}
               <li style={{ position: "relative" }} className="group">
                 <button className="flex items-center gap-1 text-white/82 hover:text-white hover:bg-white/8 transition-all"
                   style={{ padding: "8px 14px", borderRadius: "10px", fontSize: "13.5px", fontWeight: 500, border: "none", background: "transparent", cursor: "pointer", color: "rgba(255,255,255,0.82)" }}>
@@ -277,7 +263,6 @@ const Navbar = () => {
                 </div>
               </li>
 
-              {/* Industries dropdown */}
               <li style={{ position: "relative" }} className="group">
                 <button className="flex items-center gap-1 hover:text-white transition-all"
                   style={{ padding: "8px 14px", borderRadius: "10px", fontSize: "13.5px", fontWeight: 500, border: "none", background: "transparent", cursor: "pointer", color: "rgba(255,255,255,0.82)" }}>
@@ -288,18 +273,12 @@ const Navbar = () => {
                 </div>
               </li>
 
-              {/* Products */}
               <li>
                 <Link to="/product" style={{
-                  padding: "8px 14px",
-                  borderRadius: "10px",
-                  fontSize: "13.5px",
-                  fontWeight: 500,
+                  padding: "8px 14px", borderRadius: "10px", fontSize: "13.5px", fontWeight: 500,
                   color: isActive("/product") ? "#F47A2A" : "rgba(255,255,255,0.82)",
                   background: isActive("/product") ? "rgba(255,255,255,0.08)" : "transparent",
-                  textDecoration: "none",
-                  transition: "all 0.2s ease",
-                  display: "block",
+                  textDecoration: "none", transition: "all 0.2s ease", display: "block",
                 }}
                   onMouseEnter={(e) => { if (!isActive("/product")) { e.target.style.color = "#fff"; e.target.style.background = "rgba(255,255,255,0.08)"; } }}
                   onMouseLeave={(e) => { if (!isActive("/product")) { e.target.style.color = "rgba(255,255,255,0.82)"; e.target.style.background = "transparent"; } }}
@@ -308,18 +287,12 @@ const Navbar = () => {
                 </Link>
               </li>
 
-              {/* Contact */}
               <li>
                 <Link to="/contact" style={{
-                  padding: "8px 14px",
-                  borderRadius: "10px",
-                  fontSize: "13.5px",
-                  fontWeight: 500,
+                  padding: "8px 14px", borderRadius: "10px", fontSize: "13.5px", fontWeight: 500,
                   color: isActive("/contact") ? "#F47A2A" : "rgba(255,255,255,0.82)",
                   background: isActive("/contact") ? "rgba(255,255,255,0.08)" : "transparent",
-                  textDecoration: "none",
-                  transition: "all 0.2s ease",
-                  display: "block",
+                  textDecoration: "none", transition: "all 0.2s ease", display: "block",
                 }}
                   onMouseEnter={(e) => { if (!isActive("/contact")) { e.target.style.color = "#fff"; e.target.style.background = "rgba(255,255,255,0.08)"; } }}
                   onMouseLeave={(e) => { if (!isActive("/contact")) { e.target.style.color = "rgba(255,255,255,0.82)"; e.target.style.background = "transparent"; } }}
@@ -331,11 +304,9 @@ const Navbar = () => {
 
             {/* Desktop CTA */}
             <div className="hidden lg:flex items-center gap-3">
-              
               <Link to="/contact" style={{
                 display: "flex", alignItems: "center", gap: "8px",
-                background: "#E8620A",
-                color: "#fff", borderRadius: "12px",
+                background: "#E8620A", color: "#fff", borderRadius: "12px",
                 padding: "10px 20px", fontSize: "13.5px", fontWeight: 600,
                 textDecoration: "none",
                 boxShadow: "0 4px 16px rgba(232,98,10,0.35)",
@@ -348,12 +319,38 @@ const Navbar = () => {
               </Link>
             </div>
 
-            {/* Mobile toggle */}
-            <button onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden"
-              style={{ color: "#fff", padding: "6px", borderRadius: "8px", border: "none", background: "transparent", cursor: "pointer" }}
-              aria-label="Menu">
-              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+            {/* ✅ Mobile hamburger — FIXED: no inline display style, use className only */}
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              className="flex lg:hidden items-center justify-center flex-col mobile-menu-btn"
+              style={{
+                width: "44px",
+                height: "44px",
+                borderRadius: "10px",
+                border: "1.5px solid rgba(255,255,255,0.35)",
+                background: "rgba(255,255,255,0.12)",
+                cursor: "pointer",
+                flexShrink: 0,
+                gap: "5px",
+                padding: "0",
+              }}
+            >
+              <motion.span
+                animate={mobileOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
+                transition={{ duration: 0.22 }}
+                style={{ display: "block", width: "22px", height: "2.5px", borderRadius: "2px", background: "#fff", transformOrigin: "center" }}
+              />
+              <motion.span
+                animate={mobileOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
+                transition={{ duration: 0.18 }}
+                style={{ display: "block", width: "22px", height: "2.5px", borderRadius: "2px", background: "#fff" }}
+              />
+              <motion.span
+                animate={mobileOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
+                transition={{ duration: 0.22 }}
+                style={{ display: "block", width: "22px", height: "2.5px", borderRadius: "2px", background: "#fff", transformOrigin: "center" }}
+              />
             </button>
 
           </div>
@@ -372,10 +369,13 @@ const Navbar = () => {
               initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }}
               transition={{ type: "spring", stiffness: 320, damping: 32 }}
               style={{
-                position: "fixed", right: 0, top: 0, height: "100vh",
-                width: "320px", background: "#fff", zIndex: 10001,
-                boxShadow: "-8px 0 40px rgba(0,0,0,0.2)",
+                position: "fixed", right: 0, top: 0,
+                height: "100dvh",
+                width: "min(320px, 88vw)",
+                background: "#fff", zIndex: 10001,
+                boxShadow: "-8px 0 40px rgba(0,0,0,0.22)",
                 display: "flex", flexDirection: "column",
+                overflowY: "hidden",
               }}>
 
               {/* Drawer header */}
@@ -390,16 +390,17 @@ const Navbar = () => {
                   </div>
                   <span style={{ color: "#fff", fontWeight: 700, fontSize: "15px", fontFamily: "'Syne',sans-serif" }}>Rapid Engineering</span>
                 </div>
-                <button onClick={() => setMobileOpen(false)} style={{ color: "rgba(255,255,255,0.6)", border: "none", background: "transparent", cursor: "pointer" }}>
-                  <X size={22} />
+                <button onClick={() => setMobileOpen(false)} style={{ color: "rgba(255,255,255,0.6)", border: "none", background: "transparent", cursor: "pointer", padding: "4px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M4 4L16 16M16 4L4 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                  </svg>
                 </button>
               </div>
 
               {/* Nav items */}
               <nav style={{ flex: 1, overflowY: "auto", padding: "20px 16px" }}>
                 <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-                  
-                  {/* Home */}
+
                   <Link to="/" style={{
                     display: "flex", alignItems: "center", justifyContent: "space-between",
                     padding: "12px 16px", borderRadius: "12px", fontWeight: 500, fontSize: "14px",
@@ -412,7 +413,6 @@ const Navbar = () => {
                     <ArrowRight size={14} style={{ opacity: 0.4 }} />
                   </Link>
 
-                  {/* About */}
                   <Link to="/about" style={{
                     display: "flex", alignItems: "center", justifyContent: "space-between",
                     padding: "12px 16px", borderRadius: "12px", fontWeight: 500, fontSize: "14px",
@@ -491,7 +491,6 @@ const Navbar = () => {
                     </AnimatePresence>
                   </div>
 
-                  {/* Products */}
                   <Link to="/product" style={{
                     display: "flex", alignItems: "center", justifyContent: "space-between",
                     padding: "12px 16px", borderRadius: "12px", fontWeight: 500, fontSize: "14px",
@@ -504,7 +503,6 @@ const Navbar = () => {
                     <ArrowRight size={14} style={{ opacity: 0.4 }} />
                   </Link>
 
-                  {/* Contact */}
                   <Link to="/contact" style={{
                     display: "flex", alignItems: "center", justifyContent: "space-between",
                     padding: "12px 16px", borderRadius: "12px", fontWeight: 500, fontSize: "14px",
@@ -521,7 +519,6 @@ const Navbar = () => {
 
               {/* Drawer footer CTA */}
               <div style={{ padding: "20px", borderTop: "1px solid #E2E8F0", display: "flex", flexDirection: "column", gap: "12px" }}>
-                
                 <Link to="/contact" style={{
                   display: "flex", alignItems: "center", justifyContent: "center", gap: "8px",
                   background: "#E8620A", color: "#fff", padding: "14px",
