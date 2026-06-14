@@ -306,60 +306,7 @@ const AboutPage = () => (
       </div>
     </section>
 
-    {/* ── Team / Leadership ── */}
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-        <motion.div {...fadeUp(0)} className="text-center mb-16">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-8 h-[3px] bg-[#E8620A] rounded-full" />
-            <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#E8620A]">Our Leadership</span>
-            <div className="w-8 h-[3px] bg-[#E8620A] rounded-full" />
-          </div>
-          <h2 className="text-[#0B3D4E] font-extrabold text-3xl" style={{ fontFamily: "'Syne',sans-serif" }}>
-            The Minds Behind the Motion
-          </h2>
-        </motion.div>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          {[
-            {
-              name: "Mr. Rajesh Sharma",
-              role: "Founder & Managing Director",
-              bio: "Over 25 years of hands-on fluid power design and B2B client relation management. Sets the company's strategic growth vision.",
-              img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&q=80"
-            },
-            {
-              name: "Dr. Amit Verma",
-              role: "Technical Director",
-              bio: "Control systems expert specializing in electro-hydraulic proportional automation integration and high-cycle press tuning.",
-              img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=300&q=80"
-            },
-            {
-              name: "Mr. Vikram Singh",
-              role: "Head of Field Operations",
-              bio: "Manages our on-site emergency troubleshooting, diagnostic telemetry fleets, and schedules all preventive AMC programs.",
-              img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80"
-            }
-          ].map((leader, i) => (
-            <motion.div 
-              key={leader.name} 
-              {...fadeUp(i * 0.08)}
-              className="bg-[#F4F7FA] rounded-2xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group"
-            >
-              <div className="h-64 overflow-hidden relative">
-                <img src={leader.img} alt={leader.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-              </div>
-              <div className="p-6">
-                <h3 className="font-bold text-[#0B3D4E] text-base mb-1">{leader.name}</h3>
-                <span className="text-orange-500 text-xs font-bold uppercase tracking-wider block mb-4">{leader.role}</span>
-                <p className="text-slate-500 text-xs leading-relaxed">{leader.bio}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
+    
 
     {/* ── Certifications & Partners ── */}
     <section className="py-16 bg-[#0B3D4E] text-white">

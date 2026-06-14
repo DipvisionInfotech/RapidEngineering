@@ -330,38 +330,7 @@ const Service_TT = () => {
         </div>
       </section>
 
-      {/* Instructor Profiles */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div {...fadeUp(0)} className="text-center mb-16">
-            <span className="inline-block bg-orange-50 text-orange-500 text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full border border-orange-200 mb-4">
-              Faculty
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0B3D4E]" style={{ fontFamily: "'Syne', sans-serif" }}>Our Expert Mentors</h2>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {instructors.map((ins, i) => (
-              <motion.div 
-                key={i} 
-                {...fadeUp(i * 0.08)}
-                className="bg-[#F4F7FA] rounded-2xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 group"
-              >
-                <div className="h-64 overflow-hidden relative">
-                  <img src={ins.img} alt={ins.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-                </div>
-                <div className="p-6">
-                  <h3 className="font-bold text-[#0B3D4E] text-lg mb-1">{ins.name}</h3>
-                  <p className="text-orange-500 text-xs font-bold uppercase tracking-wider mb-2">{ins.role}</p>
-                  <p className="text-slate-400 text-xs font-semibold mb-4">{ins.exp}</p>
-                  <p className="text-slate-500 text-sm leading-relaxed">{ins.bio}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+     
 
       {/* FAQ Accordion Section */}
       <section className="py-20 bg-[#F4F7FA]">
