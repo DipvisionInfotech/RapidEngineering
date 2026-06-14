@@ -159,25 +159,25 @@ export const ProcessSection = () => {
       icon: <Target className="h-8 w-8" />,
       title: 'Diagnosis',
       description: 'Thorough holistic diagnosis to identify root causes and not just visible issues.',
-      step: '01'
+   
     },
     {
       icon: <Wrench className="h-8 w-8" />,
       title: 'Repair',
       description: 'Expert technicians carry out necessary repairs and component replacements.',
-      step: '02'
+      
     },
     {
       icon: <Zap className="h-8 w-8" />,
       title: 'Testing',
       description: 'Rigorous testing on advanced hydraulic test benches to ensure peak performance.',
-      step: '03'
+      
     },
     {
       icon: <CheckCircle className="h-8 w-8" />,
       title: 'Delivery',
       description: 'Quality certification and timely delivery of restored equipment.',
-      step: '04'
+      
     }
   ];
 
@@ -193,26 +193,11 @@ export const ProcessSection = () => {
 
         <div className="relative">
           {/* Process Timeline */}
-          <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gray-200 transform -translate-y-1/2"></div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
-            {steps.map((step, index) => (
-              <div key={index} className="text-center relative">
-                <div className="bg-white border-4 border-blue-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 relative z-10">
-                  <div className="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center">
-                    {step.icon}
-                  </div>
-                </div>
-                <div className="absolute top-2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded z-20">
-                  {step.step}
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{step.title}</h3>
-                <p className="text-gray-600">{step.description}</p>
-              </div>
-            ))}
+            
           </div>
         </div>
-      </div>
+    
     </section>
   );
 };
