@@ -164,7 +164,14 @@ const Navbar = () => {
   const [scrolled, setScrolled]                 = useState(false);
   const [mobileServices, setMobileServices]     = useState(false);
   const [mobileIndustries, setMobileIndustries] = useState(false);
+  const [isDesktop, setIsDesktop]               = useState(window.innerWidth >= 1024);
   const location = useLocation();
+
+  useEffect(() => {
+    const handleResize = () => setIsDesktop(window.innerWidth >= 1024);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 10);
@@ -222,8 +229,7 @@ const Navbar = () => {
 
             {/* Desktop links */}
             <ul
-              style={{ display: "flex", alignItems: "center", gap: "4px", flex: 1, justifyContent: "center", listStyle: "none", padding: 0, margin: 0 }}
-              className="hidden lg:flex"
+              style={{ display: isDesktop ? "flex" : "none", alignItems: "center", gap: "4px", flex: 1, justifyContent: "center", listStyle: "none", padding: 0, margin: 0 }}
             >
               <li>
                 <Link to="/" style={{
@@ -303,7 +309,7 @@ const Navbar = () => {
             </ul>
 
             {/* Desktop CTA */}
-            <div className="hidden lg:flex items-center gap-3">
+            <div style={{ display: isDesktop ? "flex" : "none", alignItems: "center", gap: "12px" }}>
               <Link to="/contact" style={{
                 display: "flex", alignItems: "center", gap: "8px",
                 background: "#E8620A", color: "#fff", borderRadius: "12px",
@@ -319,12 +325,15 @@ const Navbar = () => {
               </Link>
             </div>
 
-            {/* ✅ Mobile hamburger — FIXED: no inline display style, use className only */}
+            {/* ✅ Mobile hamburger — controlled by JS resize state, no Tailwind */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
-              className="flex lg:hidden items-center justify-center flex-col mobile-menu-btn"
               style={{
+                display: isDesktop ? "none" : "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexDirection: "column",
                 width: "44px",
                 height: "44px",
                 borderRadius: "10px",
