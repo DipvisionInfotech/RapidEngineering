@@ -112,13 +112,7 @@ const Service_Annual = () => {
             <p className="text-slate-500 leading-relaxed mb-8 text-[15px]">
               We perform regular fluid cleanliness audits, monitor operating temperatures, recalibrate proportional valves, and inspect seals to catch wear early. This systematic maintenance structure keeps your operations running efficiently with highly predictable annual maintenance costs.
             </p>
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 bg-[#E8620A] hover:bg-orange-500 text-white px-7 py-3.5 rounded-xl font-semibold transition-all hover:-translate-y-0.5 shadow-lg shadow-orange-200"
-            >
-              <Phone size={16} />
-              Request a Custom SLA Quote
-            </Link>
+            
           </motion.div>
           <motion.div {...fadeUp(0.1)} className="grid grid-cols-2 gap-4">
             {[

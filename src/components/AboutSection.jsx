@@ -29,7 +29,7 @@ const AboutSection = () => (
         className="flex items-center justify-center gap-3 mb-16"
       >
         <div className="w-8 h-[3px] bg-[#E8620A] rounded-full" />
-        <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#E8620A]">
+        <span className="text-[20px] font-bold tracking-[0.2em] uppercase text-[#E8620A]">
           About Rapid Engineering
         </span>
         <div className="w-8 h-[3px] bg-[#E8620A] rounded-full" />

@@ -124,7 +124,7 @@ const ContactSection = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="h-[3px] bg-[#E8620A] rounded-full" 
             />
-            <span className="text-[11px] font-bold tracking-[0.25em] uppercase text-[#E8620A]">Get in Touch</span>
+            <span className="text-[18px] font-bold tracking-[0.25em] uppercase text-[#E8620A]">Get in Touch</span>
             <motion.div 
               initial={{ width: 0 }}
               whileInView={{ width: 32 }}

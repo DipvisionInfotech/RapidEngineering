@@ -20,7 +20,7 @@ export default function Products() {
 
         {/* HEADER */}
         <div className="section-header">
-          <div className="section-badge">Products</div>
+          <div className="section-badge text-[20px]">Products</div>
 
           <h2>Our Product Catalog</h2>
 

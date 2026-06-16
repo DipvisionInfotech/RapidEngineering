@@ -218,10 +218,10 @@ const Navbar = () => {
             {/* Logo */}
             <Link to="/" style={{ display: "flex", alignItems: "center", gap: "12px", flexShrink: 0, textDecoration: "none" }}>
               <div style={{ lineHeight: 1 }}>
-                <p style={{ color: "#fff", fontWeight: 700, fontSize: "17px", letterSpacing: "-0.3px", fontFamily: "'Syne',sans-serif" }}>
+                <p style={{ color: "#fff", fontWeight: 700, fontSize: "21px", letterSpacing: "-0.3px", fontFamily: "'Syne',sans-serif" }}>
                   Rapid Engineering
                 </p>
-                <p style={{ color: "rgba(255,255,255,0.45)", fontSize: "10px", letterSpacing: "0.18em", textTransform: "uppercase", marginTop: "3px" }}>
+                <p style={{ color: "rgba(255,255,255,0.45)", fontSize: "16px", letterSpacing: "0.18em", textTransform: "uppercase", marginTop: "3px" }}>
                   Services
                 </p>
               </div>
@@ -233,7 +233,7 @@ const Navbar = () => {
             >
               <li>
                 <Link to="/" style={{
-                  padding: "8px 14px", borderRadius: "10px", fontSize: "13.5px", fontWeight: 500,
+                  padding: "8px 14px", borderRadius: "10px", fontSize: "16.5px", fontWeight: 500,
                   color: isActive("/") ? "#F47A2A" : "rgba(255,255,255,0.82)",
                   background: isActive("/") ? "rgba(255,255,255,0.08)" : "transparent",
                   textDecoration: "none", transition: "all 0.2s ease", display: "block",
@@ -247,7 +247,7 @@ const Navbar = () => {
 
               <li>
                 <Link to="/about" style={{
-                  padding: "8px 14px", borderRadius: "10px", fontSize: "13.5px", fontWeight: 500,
+                  padding: "8px 14px", borderRadius: "10px", fontSize: "16.5px", fontWeight: 500,
                   color: isActive("/about") ? "#F47A2A" : "rgba(255,255,255,0.82)",
                   background: isActive("/about") ? "rgba(255,255,255,0.08)" : "transparent",
                   textDecoration: "none", transition: "all 0.2s ease", display: "block",
@@ -261,7 +261,7 @@ const Navbar = () => {
 
               <li style={{ position: "relative" }} className="group">
                 <button className="flex items-center gap-1 text-white/82 hover:text-white hover:bg-white/8 transition-all"
-                  style={{ padding: "8px 14px", borderRadius: "10px", fontSize: "13.5px", fontWeight: 500, border: "none", background: "transparent", cursor: "pointer", color: "rgba(255,255,255,0.82)" }}>
+                  style={{ padding: "8px 14px", borderRadius: "10px", fontSize: "16.5px", fontWeight: 500, border: "none", background: "transparent", cursor: "pointer", color: "rgba(255,255,255,0.82)" }}>
                   Services <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-200 mt-px" />
                 </button>
                 <div className="opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 delay-75">
@@ -271,7 +271,7 @@ const Navbar = () => {
 
               <li style={{ position: "relative" }} className="group">
                 <button className="flex items-center gap-1 hover:text-white transition-all"
-                  style={{ padding: "8px 14px", borderRadius: "10px", fontSize: "13.5px", fontWeight: 500, border: "none", background: "transparent", cursor: "pointer", color: "rgba(255,255,255,0.82)" }}>
+                  style={{ padding: "8px 14px", borderRadius: "10px", fontSize: "16.5px", fontWeight: 500, border: "none", background: "transparent", cursor: "pointer", color: "rgba(255,255,255,0.82)" }}>
                   Industries <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-200 mt-px" />
                 </button>
                 <div className="opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 delay-75">
@@ -281,7 +281,7 @@ const Navbar = () => {
 
               <li>
                 <Link to="/product" style={{
-                  padding: "8px 14px", borderRadius: "10px", fontSize: "13.5px", fontWeight: 500,
+                  padding: "8px 14px", borderRadius: "10px", fontSize: "16.5px", fontWeight: 500,
                   color: isActive("/product") ? "#F47A2A" : "rgba(255,255,255,0.82)",
                   background: isActive("/product") ? "rgba(255,255,255,0.08)" : "transparent",
                   textDecoration: "none", transition: "all 0.2s ease", display: "block",
@@ -295,7 +295,7 @@ const Navbar = () => {
 
               <li>
                 <Link to="/contact" style={{
-                  padding: "8px 14px", borderRadius: "10px", fontSize: "13.5px", fontWeight: 500,
+                  padding: "8px 14px", borderRadius: "10px", fontSize: "16.5px", fontWeight: 500,
                   color: isActive("/contact") ? "#F47A2A" : "rgba(255,255,255,0.82)",
                   background: isActive("/contact") ? "rgba(255,255,255,0.08)" : "transparent",
                   textDecoration: "none", transition: "all 0.2s ease", display: "block",
@@ -313,7 +313,7 @@ const Navbar = () => {
               <Link to="/contact" style={{
                 display: "flex", alignItems: "center", gap: "8px",
                 background: "#E8620A", color: "#fff", borderRadius: "12px",
-                padding: "10px 20px", fontSize: "13.5px", fontWeight: 600,
+                padding: "10px 20px", fontSize: "16.5px", fontWeight: 600,
                 textDecoration: "none",
                 boxShadow: "0 4px 16px rgba(232,98,10,0.35)",
                 transition: "all 0.2s ease",

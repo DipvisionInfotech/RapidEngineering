@@ -90,7 +90,7 @@ className="text-center mb-24"
 
 <div className="w-12 h-[4px] bg-[#E8620A]" />
 
-<span className="uppercase tracking-[0.25em] text-[#E8620A] font-bold">
+<span className="text-[20px]  uppercase tracking-[0.25em] text-[#E8620A] font-bold">
 What We Do
 </span>
 

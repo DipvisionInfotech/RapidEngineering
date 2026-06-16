@@ -21,7 +21,7 @@ const ProductsPreview = () => (
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-8 h-[3px] bg-[#E8620A] rounded-full" />
-            <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#E8620A]">Product Catalogue</span>
+            <span className="text-[18px] font-bold tracking-[0.2em] uppercase text-[#E8620A]">Product Catalogue</span>
             <div className="w-8 h-[3px] bg-[#E8620A] rounded-full" />
           </div>
           <h2 className="text-[#0B3D4E] font-extrabold leading-tight tracking-tight mb-4"
